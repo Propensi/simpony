@@ -92,8 +92,12 @@ class AssignmentsController extends Controller
                 'file' => 'max:'.$maxFileSize
             ];
 
-            $this->validate($request, $rules);
+            $validation2 = $this->validate($request, $rules);
             
+            if($validation != null){
+                return Redirect::back()->withErrors($validation);
+            }
+
             $fileName = $file->getClientOriginalName();
             $destinationPath = config('app.fileDestinationPath').'/'.$fileName;
             $uploaded = Storage::put($destinationPath, file_get_contents($file->getRealPath()));
