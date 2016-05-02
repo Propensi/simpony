@@ -9,6 +9,7 @@
 
 
                     <img src="http://localhost/simpony/resources/uploads/simponi.png" width="450px" class="img-responsive">
+                    <test>
 
             <br>
             <h1>
