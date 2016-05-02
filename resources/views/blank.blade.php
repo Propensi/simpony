@@ -7,7 +7,10 @@
                  <div class="col-md-12">
                     <center>
 
-                            <img src="http://localhost/TestRepo3/simpony2/resources/uploads/simponi.png" width="450px">
+
+                    <img src="http://localhost/simpony/resources/uploads/simponi.png" width="450px" class="img-responsive">
+                    
+
             <br>
             <h1>
                 Selamat Datang {{ Auth::user()->name }}
