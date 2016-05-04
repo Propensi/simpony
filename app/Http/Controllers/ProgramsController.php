@@ -57,9 +57,9 @@ class ProgramsController extends Controller
      *
      * @return Response
      */
-    public function show($id)
+    public function show($Prog_ID)
     {
-        $program = Program::findOrFail($id);
+        $program = Program::findOrFail($Prog_ID);
 
         return view('programs.show', compact('program'));
     }
@@ -71,9 +71,9 @@ class ProgramsController extends Controller
      *
      * @return Response
      */
-    public function edit($id)
+    public function edit($Prog_ID)
     {
-        $program = Program::findOrFail($id);
+        $program = Program::findOrFail($Prog_ID);
 
         return view('programs.edit', compact('program'));
     }
@@ -85,10 +85,10 @@ class ProgramsController extends Controller
      *
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($Prog_ID, Request $request)
     {
         
-        $program = Program::findOrFail($id);
+        $program = Program::findOrFail($Prog_ID);
         $program->update($request->all());
 
         Session::flash('flash_message', 'Program updated!');
@@ -103,9 +103,9 @@ class ProgramsController extends Controller
      *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($Prog_ID)
     {
-        Program::destroy($id);
+        Program::destroy($Prog_ID);
 
         Session::flash('flash_message', 'Program deleted!');
 
