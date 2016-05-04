@@ -71,6 +71,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('departments', 'DepartmentsController');
 
 });
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('programs', 'ProgramsController');
+});
 
 	Route::resource('notifikasis', 'NotifikasisController');
 	Route::resource('assignments', 'AssignmentsController');
