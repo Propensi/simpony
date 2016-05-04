@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin_template')
 
 @section('content')
 
@@ -7,31 +7,32 @@
 
     {!! Form::model($program, [
         'method' => 'PATCH',
-        'url' => ['programs', $program->id],
-        'class' => 'form-horizontal'
+        'url' => ['programs', $program->Prog_ID],
+        'class' => 'form-horizontal',
+        'class' => 'form-horizontal update'
     ]) !!}
 
-                <div class="form-group {{ $errors->has('Prog_ID') ? 'has-error' : ''}}">
+<!--                 <div class="form-group {{ $errors->has('Prog_ID') ? 'has-error' : ''}}">
                 {!! Form::label('Prog_ID', 'Prog Id: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::number('Prog_ID', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('Prog_ID', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+            </div> -->
             <div class="form-group {{ $errors->has('Prog_Nama') ? 'has-error' : ''}}">
                 {!! Form::label('Prog_Nama', 'Prog Nama: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('Prog_Nama', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('Prog_Nama', null, ['class' => 'form-control','unique' => 'Prog_Nama','required'=>'required']) !!}
                     {!! $errors->first('Prog_Nama', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('Jadwal_Tayang') ? 'has-error' : ''}}">
+<!--             <div class="form-group {{ $errors->has('Jadwal_Tayang') ? 'has-error' : ''}}">
                 {!! Form::label('Jadwal_Tayang', 'Jadwal Tayang: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('Jadwal_Tayang', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('Jadwal_Tayang', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+            </div> -->
             <div class="form-group {{ $errors->has('Prog_Deskripsi') ? 'has-error' : ''}}">
                 {!! Form::label('Prog_Deskripsi', 'Prog Deskripsi: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -46,6 +47,7 @@
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
+
     {!! Form::close() !!}
 
     @if ($errors->any())
@@ -56,4 +58,9 @@
         </ul>
     @endif
 
+   <script>
+    $(".update").on("submit", function(){
+        return confirm("Do you want to update this item?");
+    });
+    </script>
 @endsection
