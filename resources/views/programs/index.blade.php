@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin_template')
 
 @section('content')
 
@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th>Prog ID</th><th>Prog Nama</th><th>Jadwal Tayang</th><th>Actions</th>
+                    <th>No</th><th>Nama Program</th><th> Deskripsi </th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,18 +16,20 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('programs', $item->id) }}">{{ $item->Prog_ID }}</a></td><td>{{ $item->Prog_Nama }}</td><td>{{ $item->Jadwal_Tayang }}</td>
+                    <td><a href="{{ url('programs', $item->Prog_ID) }}">{{ $item->Prog_Nama }}</a></td><td>{{ $item->Prog_Deskripsi }}</td>
                     <td>
-                        <a href="{{ url('programs/' . $item->id . '/edit') }}">
+                        <a href="{{ url('programs/' . $item->Prog_ID . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',
-                            'url' => ['programs', $item->id],
-                            'style' => 'display:inline'
+                            'url' => ['programs', $item->Prog_ID],
+                            'style' => 'display:inline',
+                            'class' => 'delete'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
+                        
                     </td>
                 </tr>
             @endforeach
@@ -35,5 +37,9 @@
         </table>
         <div class="pagination"> {!! $programs->render() !!} </div>
     </div>
-
+    <script>
+    $(".delete").on("submit", function(){
+        return confirm("Do you want to delete this item?");
+    });
+</script>
 @endsection
