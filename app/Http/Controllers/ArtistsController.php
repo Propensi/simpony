@@ -9,6 +9,7 @@ use App\Artist;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use Illuminate\Support\Facades\Redirect;
 
 class ArtistsController extends Controller
 {
@@ -48,6 +49,16 @@ class ArtistsController extends Controller
         Session::flash('flash_message', 'Artist added!');
 
         return redirect('artists');
+    }
+
+    public function save(Request $request)
+    {
+        
+        Artist::create($request->all());
+
+        Session::flash('flash_message', 'Artist added!');
+
+        return Redirect::back();
     }
 
     /**
