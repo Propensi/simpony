@@ -43,6 +43,12 @@ class ArtprogsController extends Controller
      */
     public function store(Request $request)
     {
+        $duplikasi = Artprog::where('Prog_ID','=',$request->Prog_ID)->where('Artis_ID','=',$request->Artis_ID)->first();
+        
+        if(!is_null($duplikasi)) {
+                    $error = "Artis sudah terdaftar di Program ini.";
+                    return Redirect::back()->withErrors($error);
+        }
         
         artprogs::create($request->all());
 
