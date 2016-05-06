@@ -1,1 +1,2 @@
 <li ><a href ="{{url('assignments/pekerjaanstaff')}}"><i class="fa fa-files-o"></i><span>Melihat Pekerjaan</span></a></li>
+<li ><a href ="{{url('artists')}}"><i class="fa fa-files-o"></i><span>Mengelola Artis</span></a></li>
