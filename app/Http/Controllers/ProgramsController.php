@@ -9,6 +9,7 @@ use App\Program;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use App\Artist;
 
 class ProgramsController extends Controller
 {
@@ -60,8 +61,9 @@ class ProgramsController extends Controller
     public function show($Prog_ID)
     {
         $program = Program::findOrFail($Prog_ID);
+        $artists = Artist::paginate(15);
 
-        return view('programs.show', compact('program'));
+        return view('programs.show', compact('program', 'artists'));
     }
 
     /**
