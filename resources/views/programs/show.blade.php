@@ -56,6 +56,29 @@
         </div>
         <div class="modal-body">
            
+    {!! Form::open(['url' => 'artprogs/assign', 'class' => 'form-horizontal']) !!}
+
+               
+            <div class="form-group {{ $errors->has('Nama_Artis') ? 'has-error' : ''}}">
+                 {!! Form::label('Nama_Artis', 'Nama Artis: ', ['class' => 'col-sm-3 control-label']) !!}
+            
+                <div class="col-sm-6">
+                    {!! Form::select('Artis_ID', (['' => 'Pilih Artis'] + $artis), null,['class' => 'form-control' , 'required'=> 'required']) !!}
+                    
+                    {!! $errors->first('Nama_Artis', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+                
+                    {!! Form::hidden('Prog_ID',$program->Prog_ID) !!}
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-3">
+            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+        </div>
+    </div>
+    {!! Form::close() !!}
+
+<hr>
 
    {!! Form::open(['url' => 'artists/save', 'class' => 'form-horizontal']) !!}
 

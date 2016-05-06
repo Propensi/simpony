@@ -62,8 +62,10 @@ class ProgramsController extends Controller
     {
         $program = Program::findOrFail($Prog_ID);
         $artists = Artist::paginate(15);
+        $artis = \DB::table('artists')->lists('Nama_Artis', 'Artis_ID');
 
-        return view('programs.show', compact('program', 'artists'));
+
+        return view('programs.show', compact('program', 'artists', 'artis'));
     }
 
     /**
@@ -121,5 +123,7 @@ class ProgramsController extends Controller
         return view('programs.jadwalharian', compact('programs1')); //array di index
         
     }
+
+
 
 }
