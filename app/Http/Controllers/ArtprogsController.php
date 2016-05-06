@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\artprog;
+use App\Artprog;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 use Session;
 use App\Artist;
 
@@ -21,9 +22,9 @@ class ArtprogsController extends Controller
      */
     public function index()
     {
-        $artprogs = artprogs::paginate(15);
+        $artprog = Artprog::paginate(15);
 
-        return view('artprogs.index', compact('artprogs'));
+        return view('artprog.index', compact('artprog'));
     }
 
     /**
@@ -33,7 +34,7 @@ class ArtprogsController extends Controller
      */
     public function create()
     {
-        return view('artprogs.create');
+        return view('artprog.create');
     }
 
     /**
@@ -44,11 +45,11 @@ class ArtprogsController extends Controller
     public function store(Request $request)
     {
         
-        artprogs::create($request->all());
+        Artprog::create($request->all());
 
-        Session::flash('flash_message', 'artprogs added!');
+        Session::flash('flash_message', 'artprog added!');
 
-        return redirect('artprogs');
+        return Redirect::back();
     }
 
     /**
@@ -60,10 +61,10 @@ class ArtprogsController extends Controller
      */
     public function show($artprog_ID)
     {
-        $artprogs = artprogs::findOrFail($artprog_ID);
+        $artprog = Artprog::findOrFail($artprog_ID);
         $artists = Artist::paginate(15);
 
-        return view('artprogs.show', compact('artprogs', 'artists'));
+        return view('artprog.show', compact('artprog', 'artists'));
     }
 
     /**
@@ -75,9 +76,9 @@ class ArtprogsController extends Controller
      */
     public function edit($artprog_ID)
     {
-        $artprogs = artprogs::findOrFail($artprog_ID);
+        $artprog = Artprog::findOrFail($artprog_ID);
 
-        return view('artprogs.edit', compact('artprogs'));
+        return view('artprog.edit', compact('artprog'));
     }
 
     /**
@@ -90,12 +91,12 @@ class ArtprogsController extends Controller
     public function update($artprog_ID, Request $request)
     {
         
-        $artprogs = artprogs::findOrFail($artprog_ID);
-        $artprogs->update($request->all());
+        $artprog = Artprog::findOrFail($artprog_ID);
+        $artprog->update($request->all());
 
-        Session::flash('flash_message', 'artprogs updated!');
+        Session::flash('flash_message', 'artprog updated!');
 
-        return redirect('artprogs');
+        return redirect('artprog');
     }
 
     /**
@@ -107,18 +108,18 @@ class ArtprogsController extends Controller
      */
     public function destroy($artprog_ID)
     {
-        artprogs::destroy($artprog_ID);
+        Artprog::destroy($artprog_ID);
 
-        Session::flash('flash_message', 'artprogs deleted!');
+        Session::flash('flash_message', 'artprog deleted!');
 
-        return redirect('artprogs');
+        return redirect('artprog');
     }
 
     public function jadwalharian()
     {
         
-        $artprogs1 = artprogs::paginate(15);
-        return view('artprogs.jadwalharian', compact('artprogs1')); //array di index
+        $artprog1 = Artprog::paginate(15);
+        return view('artprog.jadwalharian', compact('artprog1')); //array di index
         
     }
 

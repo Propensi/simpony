@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 use App\Artist;
+use Illuminate\Support\Facades\Redirect;
 
 class ProgramsController extends Controller
 {
@@ -61,8 +62,11 @@ class ProgramsController extends Controller
     public function show($Prog_ID)
     {
         $program = Program::findOrFail($Prog_ID);
-        $artists = Artist::paginate(15);
+        $artists = \DB::table('artisprograms')->where('Prog_ID', '=' , $Prog_ID)->join('artists', function ($join) {
+            $join->on('artisprograms.Artis_ID','=','artists.Artis_ID');
+        })->get();
         $artis = \DB::table('artists')->lists('Nama_Artis', 'Artis_ID');
+
 
 
         return view('programs.show', compact('program', 'artists', 'artis'));
