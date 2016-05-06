@@ -1,7 +1,6 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
     <h1>Programs <a href="{{ url('programs/create') }}" class="btn btn-primary pull-right btn-sm">Add New Program</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
