@@ -74,4 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('notifikasis', 'NotifikasisController');
 	Route::resource('assignments', 'AssignmentsController');
-		Route::resource('comments', 'CommentsController');
+	Route::resource('comments', 'CommentsController');
+
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('jadwaltayangs', 'JadwaltayangsController');
+});
