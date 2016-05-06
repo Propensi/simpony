@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Program extends Model
+class Artprog extends Model
 {
     protected $primaryKey = 'artprog_ID';
 
