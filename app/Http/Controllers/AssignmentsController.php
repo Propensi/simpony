@@ -105,18 +105,18 @@ class AssignmentsController extends Controller
         }
 
          // ----------- e-mail------------ //
-            $data = array(
-                'user' => "Tonipra",
-                'nama_assn' => $request->Assn_Nama,
-                'deadline' => $request->Tgl_Deadline
-            );
+            // $data = array(
+            //     'user' => "Tonipra",
+            //     'nama_assn' => $request->Assn_Nama,
+            //     'deadline' => $request->Tgl_Deadline
+            // );
 
            
 
-            Mail::send('emails.created', $data, function ($message) {
-                $message->from('simponi.rcti@gmail.com', 'SIMPONI~');
-                $message->to('toni.prabowo47@gmail.com', 'Toni Prabowo')->subject('Pekerjaan Baru Diterima!');
-            });
+            // Mail::send('emails.created', $data, function ($message) {
+            //     $message->from('simponi.rcti@gmail.com', 'SIMPONI~');
+            //     $message->to('toni.prabowo47@gmail.com', 'Toni Prabowo')->subject('Pekerjaan Baru Diterima!');
+            // });
         
 
            $assignments = Assignment::create(array('Assn_Nama' => $request->Assn_Nama, 'Dept_ID' => $request->Dept_ID, 'Emp_ID_Req_Vald' => $request->Emp_ID_Req_Vald, 'Assn_Deskripsi' => $request->Assn_Deskripsi, 

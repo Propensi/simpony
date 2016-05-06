@@ -26,6 +26,9 @@ Route::group(['middleware' => 'Staff'], function () {
 	Route::get('assignments/staffpekerjaan', 'AssignmentsController@staffpekerjaan');
 	Route::get('assignments/{Assn_ID}/pekerjaanstaff', 'AssignmentsController@staffview');
 	Route::get('assignments/staffpekerjaan', 'AssignmentsController@staffpekerjaan');
+	Route::post('artists/save', 'ArtistsController@save');
+	Route::post('artprogs/store', 'ArtprogsController@store');
+
 });
 
 // minimal HG

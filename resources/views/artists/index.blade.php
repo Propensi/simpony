@@ -2,7 +2,7 @@
 
 @section('content') 
 
-    <h1>Artists <a href="{{ url('artists/create') }}" class="btn btn-primary pull-right btn-sm">Add New Artist</a></h1>
+    <h1>Mengelola Artis <a href="{{ url('artists/create') }}" class="btn btn-primary pull-right btn-sm">Mendaftarkan Nama Artis</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
