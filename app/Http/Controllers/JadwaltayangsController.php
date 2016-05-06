@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Program;
 use App\Jadwaltayang;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -31,7 +31,10 @@ class JadwaltayangsController extends Controller
      */
     public function create()
     {
-        return view('jadwaltayangs.create');
+        $programs = \DB::table('programs')->lists('Prog_Nama', 'Prog_ID');
+        // key nya ID, di list berupa angka. di save data berupa judul program
+        
+        return view('jadwaltayangs.create', compact('programs', $programs));
     }
 
     /**
@@ -39,10 +42,19 @@ class JadwaltayangsController extends Controller
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store(Request $data)
     {
-        
-        Jadwaltayang::create($request->all());
+
+        $namanya_program = Program::where('Prog_ID', '=', $data['Prog_Nama'])->first();
+        // Jadwaltayang::create($request->all());        
+        Jadwaltayang::create([
+            // 'Jadwal_ID' => $data['Jadwal_ID'],
+            'Prog_ID' => $data['Prog_Nama'],
+
+            'Nama_Program' => $namanya_program->Prog_Nama,
+            'Tanggal' => $data['Tanggal'],
+            'Time' => $data['Time']
+        ]);
 
         Session::flash('flash_message', 'Jadwaltayang added!');
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin_template')
 
 @section('content')
 <div class="container">
@@ -8,20 +8,16 @@
 
     {!! Form::open(['url' => '/jadwaltayangs', 'class' => 'form-horizontal']) !!}
 
-                <div class="form-group {{ $errors->has('Prog_ID') ? 'has-error' : ''}}">
-                {!! Form::label('Prog_ID', trans('jadwaltayangs.Prog_ID'), ['class' => 'col-sm-3 control-label']) !!}
+
+            <div class="form-group {{ $errors->has('Prog_Nama') ? 'has-error' : ''}}">
+                {!! Form::label('Nama_Program',  trans('jadwaltayangs.Nama_Program'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('Prog_ID', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('Prog_ID', '<p class="help-block">:message</p>') !!}
+                    {!! Form::select('Prog_Nama', (['' => 'Select Program'] + $programs), null, ['class' => 'form-control' , 'required'=> 'required']) !!}
+                    
+                    {!! $errors->first('Prog_Nama', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('Nama_Program') ? 'has-error' : ''}}">
-                {!! Form::label('Nama_Program', trans('jadwaltayangs.Nama_Program'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('Nama_Program', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('Nama_Program', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+
             <div class="form-group {{ $errors->has('Tanggal') ? 'has-error' : ''}}">
                 {!! Form::label('Tanggal', trans('jadwaltayangs.Tanggal'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
