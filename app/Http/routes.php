@@ -7,10 +7,6 @@ Route::get('/', function () {
 	return redirect('/home');
 });
 
-Route::group(['middleware' => ['web']], function () {
-	Route::resource('programs', 'ProgramsController');
-});
-
 // harus login
 Route::group(['middleware' => 'user'], function () {
 
@@ -71,11 +67,20 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('departments', 'DepartmentsController');
 
 });
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('programs', 'ProgramsController');
+});
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('summary', 'SummaryController');
+});
 
 	Route::resource('notifikasis', 'NotifikasisController');
 	Route::resource('assignments', 'AssignmentsController');
 		Route::resource('comments', 'CommentsController');
 
 Route::group(['middleware' => ['web']], function () {
+
 	Route::resource('artists', 'ArtistsController');
+	Route::resource('programs', 'ProgramsController');
+		Route::resource('summary', 'SummaryController');
 });

@@ -1,18 +1,18 @@
-@extends('layouts.admin_template')
+@extends('layouts.master')
 
 @section('content')
 
-    <h1>Program</h1>
+    <h1>Summary</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Prog ID</th><th>Nama Program</th><th>Deskripsi</th>
+                    <th>Summary ID</th><th>Program ID</th><th>Nama Program</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td> {{ $program->Prog_ID }} </td><td> {{ $program->Prog_Nama }} </td><td> {{ $program->Prog_Deskripsi }} </td>
+                    <td>{{ $summary->Sum_ID }}</td> <td> {{ $summary->Sum_ID }} </td><td> {{ $summary->Prog_ID }} </td><td> {{ $summary->Prog_Nama }} </td>
                 </tr>
             </tbody>    
         </table>
