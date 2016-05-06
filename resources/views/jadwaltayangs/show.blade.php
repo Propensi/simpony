@@ -6,7 +6,6 @@
     <h1>Jadwaltayang</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
-            <!-- <table> -->
             <thead>
                 <tr>
                     <th>ID.</th> <th>{{ trans('jadwaltayangs.Prog_ID') }}</th><th>{{ trans('jadwaltayangs.Nama_Program') }}</th><th>{{ trans('jadwaltayangs.Tanggal') }}</th><th>{{ trans('jadwaltayangs.Time') }}</th>

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin_template')
 
 @section('content')
 
@@ -17,17 +17,18 @@
             <div class="form-group {{ $errors->has('Prog_Nama') ? 'has-error' : ''}}">
                 {!! Form::label('Prog_Nama', 'Nama Program: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('Prog_Nama', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('Prog_Nama', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('Prog_Nama', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('Jadwal_Tayang') ? 'has-error' : ''}}">
+            <!-- <div class="form-group {{ $errors->has('Jadwal_Tayang') ? 'has-error' : ''}}">
+                <p>
                 {!! Form::label('Jadwal_Tayang', 'Jadwal Tayang: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('Jadwal_Tayang', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('Jadwal_Tayang', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+            </div> -->
             <div class="form-group {{ $errors->has('Prog_Deskripsi') ? 'has-error' : ''}}">
                 {!! Form::label('Prog_Deskripsi', 'Deskripsi: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -51,5 +52,9 @@
             @endforeach
         </ul>
     @endif
-
+    <script>
+    $(".delete").on("submit", function(){
+        return confirm("Do you want to delete this item?");
+    });
+</script>
 @endsection
