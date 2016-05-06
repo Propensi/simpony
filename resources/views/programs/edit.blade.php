@@ -12,21 +12,14 @@
         'class' => 'form-horizontal update'
     ]) !!}
             <div class="form-group {{ $errors->has('Prog_Nama') ? 'has-error' : ''}}">
-                {!! Form::label('Prog_Nama', 'Prog Nama: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('Prog_Nama', null, ['class' => 'form-control', 'required'=>'required']) !!}
-                    {!! $errors->first('Prog_Nama', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('Prog_Nama') ? 'has-error' : ''}}">
-                {!! Form::label('Prog_Nama', 'Prog Nama: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('Prog_Nama', 'Nama Program: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('Prog_Nama', null, ['class' => 'form-control','unique' => 'Prog_Nama','required'=>'required']) !!}
                     {!! $errors->first('Prog_Nama', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('Prog_Deskripsi') ? 'has-error' : ''}}">
-                {!! Form::label('Prog_Deskripsi', 'Prog Deskripsi: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('Prog_Deskripsi', 'Deskripsi: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::textarea('Prog_Deskripsi', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('Prog_Deskripsi', '<p class="help-block">:message</p>') !!}
