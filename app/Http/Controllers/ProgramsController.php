@@ -112,4 +112,12 @@ class ProgramsController extends Controller
         return redirect('programs');
     }
 
+    public function jadwalharian()
+    {
+        
+        $programs1 = Program::paginate(15);
+        return view('programs.jadwalharian', compact('programs1')); //array di index
+        
+    }
+
 }
