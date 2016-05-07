@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-<div class="container">
+<div class="col-md-10">
 
     <h1>Jadwaltayangs <a href="{{ url('/jadwaltayangs/create') }}" class="btn btn-primary pull-right btn-sm">Add New Jadwaltayang</a></h1>
     <div class="table">
