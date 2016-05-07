@@ -1,7 +1,6 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
     <h1>Programs <a href="{{ url('programs/create') }}" class="btn btn-primary pull-right btn-sm">Add New Program</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
@@ -29,7 +28,6 @@
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
-                        
                     </td>
                 </tr>
             @endforeach
@@ -37,6 +35,7 @@
         </table>
         <div class="pagination"> {!! $programs->render() !!} </div>
     </div>
+
     <script>
     $(".delete").on("submit", function(){
         return confirm("Do you want to delete this item?");
