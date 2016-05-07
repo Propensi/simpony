@@ -50,6 +50,7 @@ Route::group(['middleware' => 'HG'], function () {
 Route::group(['middleware' => 'HoD'], function () {
 	Route::get('assignments/rejected', 'AssignmentsController@rejected');
 	Route::get('assignments/{Assn_ID}/assign', 'AssignmentsController@assign');
+	Route::get('programs/jadwalharian', 'ProgramsController@jadwalharian');
 
 });
 
