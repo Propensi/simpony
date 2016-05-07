@@ -16,7 +16,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <!--<td>{{ $x }}</td>-->
-                    <td>{{ $x }}</td><td><a href="{{ url('users', $item->user_ID) }}">{{ $item->name }}</a></td><td>{{ $item->no_peg }}</td><td>{{ $item->email }}</td><td>{{ $item->role }}</td><td>{{ $item->Dept_name }}</td>
+                    <td>{{ $x }}</td><td><a href="{{ url('users', $item->user_ID) }}">{{ $item->name }}</a></td><td>{{ $item->no_peg }}</td><td>{{ $item->email }}</td><td>{{ $item->role }}</td><td>{{ $item->departments->Dept_Name }}</td>
                     <td>
                         <a href="{{ url('users/' . $item->user_ID . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
