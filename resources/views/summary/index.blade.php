@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>No</th><th>Prog Nama</th><th>Actions</th>
+                    <th>No</th><th>Nama Program</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
