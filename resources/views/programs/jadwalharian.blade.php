@@ -1,27 +1,29 @@
 @extends('layouts.admin_template')
 
 @section('content')
+<div class="container">
 
-<div class="table">
-            <table class="table table-bordered table-striped table-hover">
-                <thead>
-                    <h4> Jadwal Program </h4>
-                    <tr>
-                         <th>No.</th><th>Jam Tayang</th><th>Program</th>
-                     </tr>
-                </thead>
-                <tbody>
+    <h1>Jadwal Program Tayang Hari Ini</h1>
+    <div class="table">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Nama Program</th><th>Jam Tayang</th><th>Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
             {{-- */$x=0;/* --}}
-            @foreach($programs1 as $item)
+            @foreach($jadwaltayangs as $item)
                 {{-- */$x++;/* --}}
                 <tr>
-                    <td>{{ $x }}</td>
-                    <td><a href="{{ url('programs', $item->Prog_ID) }}">{{ $item->Jadwal_Tayang }}</a></td><td> {{ $item->Prog_Nama}} </td>
+                    <td>{{ $item->Nama_Program }}</td>
+                    <td>{{ $item->Time }}</td>
+                    <td>{{ $item->Tanggal }}</td>
                 </tr>
-                @endforeach
-                <tbody>
-            </table>
-    <div class="pagination"> {!! $programs1->render() !!} </div>
+            @endforeach
+            </tbody>
+        </table>
+        <div class="pagination"> {!! $jadwaltayangs->render() !!} </div>
+    </div>
 </div>
-
 @endsection
