@@ -4,23 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Program extends Model
+class Artist extends Model
 {
-    protected $primaryKey = 'Prog_ID';
-
+ 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'programs';
-
+    protected $table = 'artists';
+    protected $primaryKey = 'Artis_ID';
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['Prog_ID', 'Prog_Nama', 'Jadwal_Tayang', 'Prog_Deskripsi'];
+    protected $fillable = ['Artis_ID', 'Nama_Artis'];
     public $timestamps = false;
-
 }
