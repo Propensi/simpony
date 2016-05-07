@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-<div class="container">
+<div class="col-md-10">
 
     <h1>Create New Jadwaltayang</h1>
     <hr/>
