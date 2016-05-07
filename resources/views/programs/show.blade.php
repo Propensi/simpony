@@ -120,6 +120,7 @@
                 <p>{{ $error }}</p>
             @endforeach
         </div>
+        @endif
 
 
 
