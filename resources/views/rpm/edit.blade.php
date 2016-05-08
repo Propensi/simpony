@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.admin_template')
 
 @section('content')
-<div class="container">
 
     <h1>Edit rpm</h1>
     <hr/>
@@ -50,5 +49,4 @@
         </ul>
     @endif
 
-</div>
 @endsection

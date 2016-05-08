@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.admin_template')
 
 @section('content')
-<div class="container">
 
     <h1>rpm</h1>
     <div class="table-responsive">
@@ -19,5 +18,4 @@
         </table>
     </div>
 
-</div>
 @endsection

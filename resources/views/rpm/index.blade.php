@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.admin_template')
 
 @section('content')
-<div class="container">
 
     <h1>Rating Per Menit <a href="{{ url('/rpm/create') }}" class="btn btn-primary pull-right btn-sm">Add New rpm</a></h1>
     <div class="table">
@@ -35,5 +34,4 @@
         <div class="pagination"> {!! $rpm->render() !!} </div>
     </div>
 
-</div>
 @endsection
