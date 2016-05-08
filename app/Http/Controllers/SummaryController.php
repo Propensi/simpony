@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Rpm;
 use App\Summary;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use Illuminate\Support\Facades\Redirect;
 
 class SummaryController extends Controller
 {
@@ -43,11 +44,18 @@ class SummaryController extends Controller
     public function store(Request $request)
     {
         
+        $duplikasi = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal_Sum)->first();
+        
+        if(!is_null($duplikasi)) {
+                    $error = "Summary sudah ada di Program ini.";
+                    return Redirect::back()->withErrors($error);
+        }
+
         Summary::create($request->all());
 
         Session::flash('flash_message', 'Summary added!');
 
-        return redirect('summary');
+        return Redirect::back();
     }
 
     /**
@@ -61,7 +69,7 @@ class SummaryController extends Controller
     {
         $summary = Summary::findOrFail($id);
 
-        return view('summary.show', compact('summary'));
+        return view('summary.show', compact('summary','rpm'));
     }
 
     /**
@@ -109,7 +117,16 @@ class SummaryController extends Controller
 
         Session::flash('flash_message', 'Summary deleted!');
 
-        return redirect('summary');
+        return Redirect::back();
+    }
+
+    public function rpm($id)
+    {
+        $summary = Summary::findOrFail($id);
+        $rpm = Rpm::where('Sum_ID','=',$id)->paginate(15);
+        $artis = \DB::table('artists')->lists('Nama_Artis', 'Artis_ID');
+        return view('summary.ratingpermenit', compact('summary','rpm','artis'));
+        
     }
 
 }
