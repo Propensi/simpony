@@ -9,8 +9,11 @@
         <div class="modal-body">
 
     {!! Form::open(['url' => '/rpm', 'class' => 'form-horizontal']) !!}
+                {!! Form::hidden('Sum_ID',$summary->Sum_ID) !!}
                 <div class="form-group {{ $errors->has('Artis_ID') ? 'has-error' : ''}}">
+                {!! Form::label('Nama Artis', trans('Artis_ID'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
+                    {!! Form::select('Artis_ID', (['' => 'Pilih Artis'] + $artis), null,['class' => 'form-control' , 'required'=> 'required']) !!}
                     {!! $errors->first('Artis_ID', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

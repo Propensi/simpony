@@ -75,5 +75,6 @@
 
     </div>
     
+@include('summary.modalrpm')
 
 @endsection
