@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Rpm;
 use App\Summary;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -61,7 +61,7 @@ class SummaryController extends Controller
     {
         $summary = Summary::findOrFail($id);
 
-        return view('summary.show', compact('summary'));
+        return view('summary.show', compact('summary','rpm'));
     }
 
     /**
@@ -110,6 +110,14 @@ class SummaryController extends Controller
         Session::flash('flash_message', 'Summary deleted!');
 
         return redirect('summary');
+    }
+
+    public function rpm($id)
+    {
+        $summary = Summary::findOrFail($id);
+        $rpm = Rpm::paginate(15)->where('Sum_ID','=',$id);
+        return view('summary.ratingpermenit', compact('summary','rpm'));
+        
     }
 
 }
