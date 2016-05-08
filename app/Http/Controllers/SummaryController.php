@@ -125,7 +125,9 @@ class SummaryController extends Controller
         $summary = Summary::findOrFail($id);
         $rpm = Rpm::where('Sum_ID','=',$id)->paginate(15);
         $artis = \DB::table('artists')->lists('Nama_Artis', 'Artis_ID');
-        return view('summary.ratingpermenit', compact('summary','rpm','artis'));
+        $rating = \DB::table('ratingpermenit')->where('Sum_ID','=',$id)->avg('Rating');
+
+        return view('summary.ratingpermenit', compact('summary','rpm','artis','rating'));
         
     }
 

@@ -10,6 +10,7 @@
             <hr>
         
             <h4>Deskripsi : {{ $summary->programs->Prog_Deskripsi }}</h4>
+            <h4>Rata-rata Rating : {{ $rating }}</h4>
     </div>
     </div>
     </div>
