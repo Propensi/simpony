@@ -9,6 +9,7 @@ use App\Summary;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use Illuminate\Support\Facades\Redirect;
 
 class SummaryController extends Controller
 {
@@ -47,7 +48,7 @@ class SummaryController extends Controller
 
         Session::flash('flash_message', 'Summary added!');
 
-        return redirect('summary');
+        return Redirect::back();
     }
 
     /**
@@ -109,7 +110,7 @@ class SummaryController extends Controller
 
         Session::flash('flash_message', 'Summary deleted!');
 
-        return redirect('summary');
+        return Redirect::back();
     }
 
     public function rpm($id)
