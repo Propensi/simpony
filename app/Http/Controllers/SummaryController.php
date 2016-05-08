@@ -115,8 +115,9 @@ class SummaryController extends Controller
     public function rpm($id)
     {
         $summary = Summary::findOrFail($id);
-        $rpm = Rpm::paginate(15)->where('Sum_ID','=',$id);
-        return view('summary.ratingpermenit', compact('summary','rpm'));
+        $rpm = Rpm::where('Sum_ID','=',$id)->paginate(15);
+        $artis = \DB::table('artists')->lists('Nama_Artis', 'Artis_ID');
+        return view('summary.ratingpermenit', compact('summary','rpm','artis'));
         
     }
 
