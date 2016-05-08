@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin_template')
 
 @section('content')
 
@@ -31,6 +31,13 @@
                     </td>
                 </tr>
             @endforeach
+                          <?php 
+                    if($x == '0'){
+                        echo 
+                        '<td>Tidak ada summary program yang tersedia.</td><td></td><td></td><td></td><td></td><td></td>
+                        ';
+                    }
+                    ?>
             </tbody>
         </table>
         <div class="pagination"> {!! $summary->render() !!} </div>
