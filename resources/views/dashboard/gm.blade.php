@@ -22,9 +22,9 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3>90</h3>
 
-              <p>Bounce Rate</p>
+              <p>Promotions</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -39,9 +39,9 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3>60</h3>
 
-              <p>Unique Visitors</p>
+              <p>Research & Dev.</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
@@ -58,111 +58,43 @@
             <div class="box-header ui-sortable-handle" style="cursor: move;">
               <i class="ion ion-clipboard"></i>
 
-              <h3 class="box-title">To Do List</h3>
+              <h3 class="box-title">Jadwal Tayang</h3>
 
-              <div class="box-tools pull-right">
-                <ul class="pagination pagination-sm inline">
-                  <li><a href="#">«</a></li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">»</a></li>
-                </ul>
-              </div>
-            </div>
+            
             <!-- /.box-header -->
             <div class="box-body">
-              <ul class="todo-list ui-sortable">
-                <li>
-                  <!-- drag handle -->
-                      <span class="handle ui-sortable-handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <!-- checkbox -->
-                  <input type="checkbox" value="">
-                  <!-- todo text -->
-                  <span class="text">Design a nice theme</span>
-                  <!-- Emphasis label -->
-                  <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                  <!-- General tools such as edit or delete-->
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-                <li>
-                      <span class="handle ui-sortable-handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Make the theme responsive</span>
-                  <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-                <li>
-                      <span class="handle ui-sortable-handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Let theme shine like a star</span>
-                  <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-                <li>
-                      <span class="handle ui-sortable-handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Let theme shine like a star</span>
-                  <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-                <li>
-                      <span class="handle ui-sortable-handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Check your messages and notifications</span>
-                  <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-                <li>
-                      <span class="handle ui-sortable-handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                  <input type="checkbox" value="">
-                  <span class="text">Let theme shine like a star</span>
-                  <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                  <div class="tools">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-trash-o"></i>
-                  </div>
-                </li>
-              </ul>
-            </div>
+
+    <div class="table">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <!-- <th>S.No</th> -->
+                    <th>Jam</th><th>Program</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{-- */$x=0;/* --}}
+            @foreach($jadwaltayangs as $item)
+                {{-- */$x++;/* --}}
+                <tr>
+                    <!-- <td><a href="{{ url('jadwaltayangs', $item->Jadwal_ID) }}">{{ $x }}</td> -->
+                    <td>{{ $item->Time }}</a></td>
+                    <td>{{ $item->Nama_Program }}</td>
+                   
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <div class="pagination"> {!! $jadwaltayangs->render() !!} </div>
+   
+
+</div>
+</div>
             <!-- /.box-body -->
             <div class="box-footer clearfix no-border">
-              <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-            </div>
+              </div>
           </div>      
+        </div>
         </div>
 
         <div class="col-md-6">
@@ -189,7 +121,13 @@
 
       </div>
       </div>
+
+
+
+
+
        </div>
+
 
 
 
@@ -210,14 +148,14 @@
             // Chart data records -- each entry in this array corresponds to a point on
             // the chart.
             data: [
-              { year: '2008', value: 20 },
-              { year: '2009', value: 10 },
-              { year: '2010', value: 5 },
-              { year: '2011', value: 5 },
-              { year: '2012', value: 20 }
+              { day: '2016-05-02', value: 20 },
+              { day: '2016-05-03', value: 10 },
+              { day: '2016-05-04', value: 5 },
+              { day: '2016-05-05', value: 5 },
+              { day: '2016-05-06', value: 20 }
             ],
             // The name of the data record attribute that contains x-values.
-            xkey: 'year',
+            xkey: 'day',
             // A list of names of data record attributes that contain y-values.
             ykeys: ['value'],
             // Labels for the ykeys -- will be displayed when you hover over the

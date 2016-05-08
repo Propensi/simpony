@@ -17,7 +17,7 @@ Route::group(['middleware' => 'user'], function () {
 	Route::get('assignments/pelacakan', 'AssignmentsController@pelacakan');
 	Route::get('assignments/pekerjaanstaff', 'AssignmentsController@pekerjaanstaff');
 	Route::delete('rpmsum/{Rpm_ID}', 'RpmController@delete');
-
+	Route::get('jadwalharian/', 'JadwalTayangsController@jadwalharian');
 });
 
 // minimal staff

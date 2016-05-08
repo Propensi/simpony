@@ -24,6 +24,12 @@ class JadwaltayangsController extends Controller
         return view('jadwaltayangs.index', compact('jadwaltayangs'));
     }
 
+    public function jadwalharian()
+    {
+        $jadwaltayangs = Jadwaltayang::paginate(15);
+
+        return view('executive.jadwalharian', compact('jadwaltayangs'));
+    }
     /**
      * Show the form for creating a new resource.
      *

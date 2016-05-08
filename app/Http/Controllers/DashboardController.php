@@ -8,6 +8,7 @@ use Input;
 use App\User;
 use DB;
 use App\Assignment;
+use App\Jadwaltayang;
 
 class DashboardController extends Controller
 {
@@ -20,7 +21,10 @@ class DashboardController extends Controller
     public function gm()
     {
 
-        return view('dashboard.gm', compact('stats'));
+    	$jadwaltayangs = Jadwaltayang::paginate(15);
+
+       
+        return view('dashboard.gm', compact('stats','jadwaltayangs'));
     }
 
 
