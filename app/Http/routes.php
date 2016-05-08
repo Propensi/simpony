@@ -16,6 +16,7 @@ Route::group(['middleware' => 'user'], function () {
 	Route::get('assignments/{Assn_ID}/melihat', 'AssignmentsController@melihat');	
 	Route::get('assignments/pelacakan', 'AssignmentsController@pelacakan');
 	Route::get('assignments/pekerjaanstaff', 'AssignmentsController@pekerjaanstaff');
+	Route::delete('rpmsum/{Rpm_ID}', 'RpmController@delete');
 
 });
 
