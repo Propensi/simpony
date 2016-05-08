@@ -37,7 +37,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>No</th><th>{{ trans('Nama Artis') }}</th><th>{{ trans('Rating') }}</th><th>{{ trans('Deskripsi') }}</th><th>Actions</th>
+                    <th>Menit Ke</th><th>{{ trans('Nama Artis') }}</th><th>{{ trans('Rating') }}</th><th>{{ trans('Deskripsi') }}</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
