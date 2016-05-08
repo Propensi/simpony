@@ -64,23 +64,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('departments', 'DepartmentsController');
 });
 
-Route::group(['middleware' => ['web']], function () {
-	Route::resource('programs', 'ProgramsController');
-});
-
-Route::group(['middleware' => ['web']], function () {
-	Route::resource('summary', 'SummaryController');
-});
-
-Route::resource('notifikasis', 'NotifikasisController');
-Route::resource('assignments', 'AssignmentsController');
-
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['user']], function () {
+	Route::resource('artprogs','ArtprogsController');
 	Route::resource('jadwaltayangs', 'JadwaltayangsController');
 	Route::resource('comments', 'CommentsController');
-});
-
-Route::group(['middleware' => ['web']], function () {
+	Route::resource('notifikasis', 'NotifikasisController');
+	Route::resource('assignments', 'AssignmentsController');
 	Route::resource('artists', 'ArtistsController');
 	Route::resource('programs', 'ProgramsController');
 	Route::resource('summary', 'SummaryController');
