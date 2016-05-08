@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Redirect;
 use App\Rpm;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -46,7 +46,7 @@ class RpmController extends Controller
 
         Session::flash('flash_message', 'Rpm added!');
 
-        return redirect('rpm');
+        return Redirect::back();
     }
 
     /**
@@ -110,5 +110,14 @@ class RpmController extends Controller
         Session::flash('flash_message', 'Rpm deleted!');
 
         return redirect('rpm');
+    }
+
+    public function delete($id)
+    {
+        Rpm::destroy($id);
+
+        Session::flash('flash_message', 'Rpm deleted!');
+
+        return Redirect::back();
     }
 }
