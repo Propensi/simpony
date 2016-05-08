@@ -97,7 +97,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('summary', $item->Sum_ID) }}">{{ $item->Tanggal_Sum }}</a></td>
+                    <td><a href="{{ url('summary/rpm', $item->Sum_ID) }}">{{ $item->Tanggal_Sum }}</a></td>
                     <td></td>
                     <td>
                         <a href="{{ url('summary/' . $item->Sum_ID . '/edit') }}">
