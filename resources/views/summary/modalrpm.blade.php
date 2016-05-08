@@ -20,7 +20,7 @@
             <div class="form-group {{ $errors->has('Rating') ? 'has-error' : ''}}">
                 {!! Form::label('Rating', trans('Rating'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('Rating', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::number('Rating', null, ['class' => 'form-control', 'required' => 'required', 'min'=>'0' , 'max' => '100']) !!}
                     {!! $errors->first('Rating', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
