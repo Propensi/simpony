@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin_template')
 
 @section('content')
 
@@ -10,21 +10,21 @@
         'url' => ['summary', $summary->Sum_ID],
         'class' => 'form-horizontal'
     ]) !!}
-
+<!-- 
                 <div class="form-group {{ $errors->has('Sum_ID') ? 'has-error' : ''}}">
                 {!! Form::label('Sum_ID', 'Sum Id: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::number('Sum_ID', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('Sum_ID', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
-            <div class="form-group {{ $errors->has('Prog_ID') ? 'has-error' : ''}}">
+            </div> -->
+<!--             <div class="form-group {{ $errors->has('Prog_ID') ? 'has-error' : ''}}">
                 {!! Form::label('Prog_ID', 'Prog Id: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::number('Prog_ID', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('Prog_ID', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+            </div> -->
             <div class="form-group {{ $errors->has('Prog_Nama') ? 'has-error' : ''}}">
                 {!! Form::label('Prog_Nama', 'Prog Nama: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
