@@ -28,7 +28,7 @@ Route::group(['middleware' => 'Staff'], function () {
 	Route::get('assignments/staffpekerjaan', 'AssignmentsController@staffpekerjaan');
 	Route::post('artists/save', 'ArtistsController@save');
 	Route::post('artprogs/store', 'ArtprogsController@store');
-
+	Route::get('summary/rpm/{Sum_ID}','SummaryController@rpm');
 });
 
 // minimal HG
@@ -73,4 +73,5 @@ Route::group(['middleware' => ['user']], function () {
 	Route::resource('artists', 'ArtistsController');
 	Route::resource('programs', 'ProgramsController');
 	Route::resource('summary', 'SummaryController');
+	Route::resource('rpm', 'RpmController');
 });
