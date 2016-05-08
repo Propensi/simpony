@@ -44,6 +44,13 @@ class SummaryController extends Controller
     public function store(Request $request)
     {
         
+        $duplikasi = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal_Sum)->first();
+        
+        if(!is_null($duplikasi)) {
+                    $error = "Summary sudah ada di Program ini.";
+                    return Redirect::back()->withErrors($error);
+        }
+
         Summary::create($request->all());
 
         Session::flash('flash_message', 'Summary added!');

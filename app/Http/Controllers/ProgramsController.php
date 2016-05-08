@@ -66,8 +66,7 @@ class ProgramsController extends Controller
             $join->on('artisprograms.Artis_ID','=','artists.Artis_ID');
         })->get();
         $artis = \DB::table('artists')->lists('Nama_Artis', 'Artis_ID');
-        $summary = Summary::paginate(15);
-
+        $summary = Summary::where('Prog_ID','=',$Prog_ID)->paginate(15);
 
         return view('programs.show', compact('program', 'artists', 'artis','summary'));
     }
