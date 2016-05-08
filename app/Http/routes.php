@@ -55,7 +55,7 @@ Route::group(['middleware' => 'HoD'], function () {
 
 // minimal GM
 Route::group(['middleware' => 'GM'], function () {
-
+	Route::get('dashboard/gm', 'DashboardController@gm');
 });
 
 // Admin
