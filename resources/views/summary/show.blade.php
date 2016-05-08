@@ -12,7 +12,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $summary->Sum_ID }}</td> <td> {{ $summary->Prog_Nama }} </td>
+                    <td>{{ $summary->Sum_ID }}</td> <td> {{ $summary->programs->Prog_Nama }} </td>
                 </tr>
             </tbody>    
         </table>
