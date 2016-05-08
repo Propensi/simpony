@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin_template')
 
 @section('content')
 
@@ -7,12 +7,12 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Summary ID</th><th>Program ID</th><th>Nama Program</th>
+                    <th>Summary ID</th><th>Nama Program</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $summary->Sum_ID }}</td> <td> {{ $summary->Sum_ID }} </td><td> {{ $summary->Prog_ID }} </td><td> {{ $summary->Prog_Nama }} </td>
+                    <td>{{ $summary->Sum_ID }}</td> <td> {{ $summary->Prog_Nama }} </td>
                 </tr>
             </tbody>    
         </table>

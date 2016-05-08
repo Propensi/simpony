@@ -19,6 +19,6 @@ class Summary extends Model
      *
      * @var array
      */
-    protected $fillable = ['Sum_ID', 'Prog_ID', 'Prog_Nama', 'Average_Rating', 'Tanggal_Sum'];
+    protected $fillable = ['Prog_ID', 'Prog_Nama', 'Average_Rating', 'Tanggal_Sum'];
     public $timestamps = false;
 }
