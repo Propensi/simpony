@@ -45,9 +45,7 @@ class ProgramsController extends Controller
     public function store(Request $request)
     {
         
-        //Program::create($request->all());
-        //$programs = \DB::table('jadwaltayangs')->lists('Time', 'Jadwal_ID');
-
+        Program::create($request->all());
 
         Session::flash('flash_message', 'Program added!');
 
