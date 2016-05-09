@@ -33,6 +33,7 @@
 
 <hr>
 
+    <h3>Menambahkan Artis Baru</h3>
    {!! Form::open(['url' => 'artists/save', 'class' => 'form-horizontal']) !!}
 
                

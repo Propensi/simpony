@@ -9,7 +9,7 @@
             <thead>
                 <tr>
                     <!-- <th>S.No</th> -->
-                    <th>{{ trans('jadwaltayangs.Prog_ID') }}</th><th>{{ trans('jadwaltayangs.Nama_Program') }}</th><th>{{ trans('jadwaltayangs.Tanggal') }}</th><th>{{ trans('jadwaltayangs.Time') }}</th><th>Actions</th>
+                    <th>NO.</th><th>{{ trans('jadwaltayangs.Nama_Program') }}</th><th>{{ trans('jadwaltayangs.Tanggal') }}</th><th>{{ trans('jadwaltayangs.Time') }}</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +18,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <!-- <td><a href="{{ url('jadwaltayangs', $item->Jadwal_ID) }}">{{ $x }}</td> -->
-                    <td>{{ $item->Prog_ID }}</a></td>
+                    <td>{{ $x }}</a></td>
                     <td>{{ $item->Nama_Program }}</td>
                     <td>{{ $item->Tanggal }}</td>
                     <td>{{ $item->Time }}</td>
@@ -39,5 +39,6 @@
         <div class="pagination"> {!! $jadwaltayangs->render() !!} </div>
     </div>
 
+</div>
 </div>
 @endsection
