@@ -23,4 +23,9 @@ class Program extends Model
     protected $fillable = ['Prog_ID', 'Prog_Nama', 'Jadwal_Tayang', 'Prog_Deskripsi'];
     public $timestamps = false;
 
+
+     public function summary()
+    {
+        return $this->hasMany('App\Summary','Prog_ID','Prog_ID');
+    }
 }

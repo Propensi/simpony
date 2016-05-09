@@ -21,4 +21,10 @@ class Artist extends Model
      */
     protected $fillable = ['Artis_ID', 'Nama_Artis'];
     public $timestamps = false;
+
+
+    public function rpm()
+    {
+        return $this->hasMany('App\Rpm','Artis_ID','Artis_ID');
+    }
 }

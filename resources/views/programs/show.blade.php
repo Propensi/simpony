@@ -3,16 +3,35 @@
 @section('content')
 
     <h1>Program</h1>
-    <div class="invoice">
+    <div class="row">
+        <div class="col-md-12">
+    <div class="invoice" style="margin: 0px 0px;">
             <h2>{{ $program->Prog_Nama }}</h2>
             <hr>
         
             <h3>Deskripsi : {{ $program->Prog_Deskripsi }}</h3>
     </div>
+    </div>
+    </div>
 
 
-    <h1>Mengelola Artis<button type="button" class="btn btn-info btn-md pull-right" data-toggle="modal" data-target="#myModal">Mendaftarkan Nama Artis</button></h1>
-    <div class="invoice">
+
+    <br>
+
+    <div class="row">
+    <div class="col-md-6">
+        <div class="box">
+               
+    <div class="box-header with-border">
+            <h3 class="box-title">Mengelola Artis</h3>
+
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+    </div>
+    <div class="box-body">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
@@ -27,12 +46,9 @@
                     <!-- <td>{{ $x }}</td> -->
                     <td><a href="{{ url('artists', $item->Artis_ID) }}">{{ $item->Nama_Artis }}</a></td>
                     <td>
-                        <a href="{{ url('artists/' . $item->Artis_ID . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
-                        </a> /
                         {!! Form::open([
                             'method'=>'DELETE',
-                            'url' => ['artists', $item->Artis_ID],
+                            'url' => ['artprogs', $item->artprog_ID],
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
@@ -45,83 +61,81 @@
        
     </div>
 
- <!-- Modal -->
-
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h1>Mendaftarkan Artis</h1>
-        </div>
-        <div class="modal-body">
-           
-    {!! Form::open(['url' => 'artprogs/store', 'class' => 'form-horizontal']) !!}
-
-               
-            <div class="form-group {{ $errors->has('Nama_Artis') ? 'has-error' : ''}}">
-                 {!! Form::label('Nama_Artis', 'Nama Artis: ', ['class' => 'col-sm-3 control-label']) !!}
-
-                <div class="col-sm-6">
-                    {!! Form::select('Artis_ID', (['' => 'Pilih Artis'] + $artis), null,['class' => 'form-control' , 'required'=> 'required']) !!}
-                    
-                    {!! $errors->first('Nama_Artis', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-                
-                    {!! Form::hidden('Prog_ID',$program->Prog_ID) !!}
-
-    <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
-        </div>
+      <div class="box-footer">
+        <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#myModal">Mendaftarkan Nama Artis</button>
     </div>
-    {!! Form::close() !!}
 
-<hr>
-
-   {!! Form::open(['url' => 'artists/save', 'class' => 'form-horizontal']) !!}
-
-               
-            <div class="form-group {{ $errors->has('Nama_Artis') ? 'has-error' : ''}}">
-                {!! Form::label('Nama_Artis', 'Nama Artis: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('Nama_Artis', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('Nama_Artis', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-
-
-    <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
-        </div>
     </div>
-    {!! Form::close() !!}
+    </div>
 
-    @if ($errors->any())
-        <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+
+<!-- tutup box -->
+   
+
+    <div class="col-md-6">
+        <div class="box">
+             <div class="box-header with-border">
+            <h3 class="box-title">Summary</h3>
+
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+    </div>
+
+    <div class="box-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>No</th><th>Tanggal</th><th>Avg. Rating</th><th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{-- */$x=0;/* --}}
+            @foreach($summary as $item)
+                {{-- */$x++;/* --}}
+                <tr>
+                    <td>{{ $x }}</td>
+                    <td><a href="{{ url('summary/rpm', $item->Sum_ID) }}">{{ $item->Tanggal_Sum }}</a></td>
+                    <td></td>
+                    <td>
+                        <a href="{{ url('summary/' . $item->Sum_ID . '/edit') }}">
+                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                        </a> /
+                        {!! Form::open([
+                            'method'=>'DELETE',
+                            'url' => ['summary', $item->Sum_ID],
+                            'style' => 'display:inline'
+                        ]) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
             @endforeach
-        </ul>
-    @endif
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+                          <?php 
+                    if($x == '0'){
+                        echo 
+                        '<td>Tidak ada summary program yang tersedia.</td><td></td><td></td>
+                        ';
+                    }
+                    ?>
+            </tbody>
+        </table>
+        
+    
     </div>
-  </div>
 
-  @if ($errors->any())
-   <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        </div>
-        @endif
+    <div class="box-footer">
+        <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#modalsum">Menambahkan Summary</button>
+    </div>
 
+
+     </div> 
+
+    @include('programs.modal')
+     @include('programs.modalsum')
+ 
 
 
 @endsection
