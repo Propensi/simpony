@@ -16,9 +16,8 @@ Route::group(['middleware' => 'user'], function () {
 	Route::get('assignments/{Assn_ID}/melihat', 'AssignmentsController@melihat');	
 	Route::get('assignments/pelacakan', 'AssignmentsController@pelacakan');
 	Route::get('assignments/pekerjaanstaff', 'AssignmentsController@pekerjaanstaff');
-
-
-
+	Route::delete('rpmsum/{Rpm_ID}', 'RpmController@delete');
+	Route::get('jadwalharian/', 'JadwalTayangsController@jadwalharian');
 });
 
 // minimal staff
@@ -29,7 +28,8 @@ Route::group(['middleware' => 'Staff'], function () {
 	Route::get('assignments/{Assn_ID}/pekerjaanstaff', 'AssignmentsController@staffview');
 	Route::get('assignments/staffpekerjaan', 'AssignmentsController@staffpekerjaan');
 	Route::post('artists/save', 'ArtistsController@save');
-
+	Route::post('artprogs/store', 'ArtprogsController@store');
+	Route::get('summary/rpm/{Sum_ID}','SummaryController@rpm');
 });
 
 // minimal HG
@@ -44,8 +44,6 @@ Route::group(['middleware' => 'HG'], function () {
 	// flagged
 	Route::get('assignments/departmentsAssn', 'AssignmentsController@departmentAssn');
 	Route::patch('assignments/update2/{Assn_ID}', 'AssignmentsController@update2');
-
-
 	Route::resource('steps', 'StepsController');
 });
 
@@ -58,29 +56,23 @@ Route::group(['middleware' => 'HoD'], function () {
 
 // minimal GM
 Route::group(['middleware' => 'GM'], function () {
-
+	Route::get('dashboard/gm', 'DashboardController@gm');
 });
 
 // Admin
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('users', 'UsersController');
 	Route::resource('departments', 'DepartmentsController');
-
-});
-Route::group(['middleware' => ['web']], function () {
-	Route::resource('programs', 'ProgramsController');
-});
-Route::group(['middleware' => ['web']], function () {
-	Route::resource('summary', 'SummaryController');
 });
 
+Route::group(['middleware' => ['user']], function () {
+	Route::resource('artprogs','ArtprogsController');
+	Route::resource('jadwaltayangs', 'JadwaltayangsController');
+	Route::resource('comments', 'CommentsController');
 	Route::resource('notifikasis', 'NotifikasisController');
 	Route::resource('assignments', 'AssignmentsController');
-		Route::resource('comments', 'CommentsController');
-
-Route::group(['middleware' => ['web']], function () {
-
 	Route::resource('artists', 'ArtistsController');
 	Route::resource('programs', 'ProgramsController');
-		Route::resource('summary', 'SummaryController');
+	Route::resource('summary', 'SummaryController');
+	Route::resource('rpm', 'RpmController');
 });

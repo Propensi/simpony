@@ -4,28 +4,28 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Jadwaltayang extends Model
 {
-
     public $timestamps = false;
-    protected $primaryKey = 'Dept_ID';
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'departments';
+    protected $table = 'jadwaltayangs';
+
+    /**
+    * The database primary key value.
+    *
+    * @var string
+    */
+    protected $primaryKey = 'Jadwal_ID';
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['Dept_ID', 'Dept_Name'];
-
-    public function users()
-    {
-        return $this->hasMany('App\User','Dept_ID','Dept_name');
-    }
+    protected $fillable = ['Prog_ID', 'Nama_Program', 'Tanggal', 'Time'];
 }
