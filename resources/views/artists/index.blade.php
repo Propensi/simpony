@@ -24,7 +24,8 @@
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['artists', $item->Artis_ID],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+                            'class' => 'delete'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
@@ -35,5 +36,11 @@
         </table>
         <div class="pagination"> {!! $artists->render() !!} </div>
     </div>
+
+     <script>
+    $(".delete").on("submit", function(){
+        return confirm("Do you want to delete this item?");
+    });
+    </script>
 
 @endsection
