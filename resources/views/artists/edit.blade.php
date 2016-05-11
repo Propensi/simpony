@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Edit Artist</h1>
+    <h1>Ubah Nama Artis</h1>
     <hr/>
 
     {!! Form::model($artist, [
