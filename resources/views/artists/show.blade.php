@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Artist</h1>
+    <h1>Artis</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
