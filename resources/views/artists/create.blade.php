@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Create New Artist</h1>
+    <h1>Mendaftarkan Artis</h1>
     <hr/>
 
     {!! Form::open(['url' => 'artists', 'class' => 'form-horizontal']) !!}
