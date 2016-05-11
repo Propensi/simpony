@@ -8,7 +8,8 @@
     {!! Form::model($artist, [
         'method' => 'PATCH',
         'url' => ['artists', $artist->Artis_ID],
-        'class' => 'form-horizontal'
+        'class' => 'form-horizontal',
+        'class' => 'form-horizontal update'
     ]) !!}
 
                 <!-- <div class="form-group {{ $errors->has('Artis_ID') ? 'has-error' : ''}}">
@@ -41,5 +42,11 @@
             @endforeach
         </ul>
     @endif
+
+<script>
+    $(".update").on("submit", function(){
+        return confirm("Do you want to update this item?");
+    });
+</script>
 
 @endsection
