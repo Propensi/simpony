@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Jadwaltayang</h1>
+    <h1>Jadwal Tayang</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
