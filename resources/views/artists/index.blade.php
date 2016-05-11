@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Artis ID</th><th>Nama Artis</th><th>Actions</th>
+                    <th>Nomor</th><th>Nama Artis</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
