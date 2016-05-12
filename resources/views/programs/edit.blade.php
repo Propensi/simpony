@@ -42,7 +42,7 @@
     @endif
 <script>
     $(".update").on("submit", function(){
-        return confirm("Do you want to update this item?");
+        return confirm("Apakah Anda Yakin Untuk Mengubah Data Ini?");
     });
 </script>
 @endsection
