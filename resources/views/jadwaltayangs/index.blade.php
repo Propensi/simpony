@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-md-10">
 
-    <h1>Jadwaltayangs <a href="{{ url('/jadwaltayangs/create') }}" class="btn btn-primary pull-right btn-sm">Add New Jadwaltayang</a></h1>
+    <h1>Jadwal Tayang <a href="{{ url('/jadwaltayangs/create') }}" class="btn btn-primary pull-right btn-sm">Tambah Jadwal Tayang Baru</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -23,13 +23,13 @@
                     <td>{{ $item->Tanggal }}</td>
                     <td>{{ $item->Time }}</td>
                     <td>
-                        <a href="{{ url('/jadwaltayangs/' . $item->Jadwal_ID . '/edit') }}" class="btn btn-primary btn-xs">Update</a>
+                        <a href="{{ url('/jadwaltayangs/' . $item->Jadwal_ID . '/edit') }}" class="btn btn-primary btn-xs">Ubah</a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/jadwaltayangs', $item->Jadwal_ID],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                            {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>
