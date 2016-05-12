@@ -1,12 +1,12 @@
 @extends('layouts.admin_template')
 
 @section('content')
-    <h1>Programs <a href="{{ url('programs/create') }}" class="btn btn-primary pull-right btn-sm">Add New Program</a></h1>
+    <h1>Program Acara<a href="{{ url('programs/create') }}" class="btn btn-primary pull-right btn-sm">Tambah Program Baru</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>No</th><th>Nama Program</th><th> Deskripsi </th><th>Actions</th>
+                    <th>No.</th><th>Nama Program</th><th> Deskripsi </th><th>Tindakan</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +18,7 @@
                     <td><a href="{{ url('programs', $item->Prog_ID) }}">{{ $item->Prog_Nama }}</a></td><td>{{ $item->Prog_Deskripsi }}</td>
                     <td>
                         <a href="{{ url('programs/' . $item->Prog_ID . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                            <button type="submit" class="btn btn-primary btn-xs">Ubah</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',
@@ -26,7 +26,7 @@
                             'style' => 'display:inline',
                             'class' => 'delete'
                         ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                            {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>
