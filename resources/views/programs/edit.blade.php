@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Edit Program</h1>
+    <h1>Mengubah Program Acara</h1>
     <hr/>
 
     {!! Form::model($program, [
@@ -27,7 +27,7 @@
             </div>
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Perbaharui', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
 
