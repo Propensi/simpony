@@ -52,9 +52,5 @@
             @endforeach
         </ul>
     @endif
-    <script>
-    $(".delete").on("submit", function(){
-        return confirm("Apakah Anda Yakin Untuk Menghapus Data Ini?");
-    });
-</script>
+
 @endsection
