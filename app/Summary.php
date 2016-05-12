@@ -21,4 +21,11 @@ class Summary extends Model
      */
     protected $fillable = ['Prog_ID', 'Prog_Nama', 'Average_Rating', 'Tanggal_Sum'];
     public $timestamps = false;
+
+
+    public function programs()
+    {
+        return $this->belongsTo('App\Program','Prog_ID','Prog_ID');
+    }
+
 }

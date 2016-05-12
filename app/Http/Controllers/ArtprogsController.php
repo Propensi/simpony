@@ -118,7 +118,7 @@ class ArtprogsController extends Controller
 
         Session::flash('flash_message', 'artprog deleted!');
 
-        return redirect('artprog');
+        return Redirect::back();
     }
 
     public function jadwalharian()

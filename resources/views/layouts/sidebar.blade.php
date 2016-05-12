@@ -33,6 +33,9 @@
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <!-- <li class="active"><a href="#"><span>Link</span></a></li> -->
+            @if(Auth::user()->role == 'General Manager')
+            @include('layouts.generalmanager')
+            @endif
             <li class="treeview">
                 <a href="#"><i class="fa fa-dashboard"></i><span>Membuat Assignment</span><i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -42,7 +45,7 @@
             </li>
             <li><a href="{{url('assignments/pelacakan')}}"><i class="fa fa-files-o"></i><span>Melacak Assignment</span></a></li>
           
-            
+
             @if(Auth::user()->role == 'Head of Dept')
             @include('layouts.hod')
             @endif

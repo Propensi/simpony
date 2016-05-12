@@ -42,4 +42,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
 
+    public function departments()
+    {
+        return $this->belongsTo('App\Department','Dept_name','Dept_ID');
+    }
 }

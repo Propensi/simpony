@@ -20,12 +20,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //$users = User::paginate(15);
+        $users = User::paginate(15);
 
-        $users = \DB::table('users')->join('departments', function ($join) {
-            $join->on('users.Dept_name', '=', 'departments.Dept_ID');
-        })
-        ->paginate(100);
+        // $users = \DB::table('users')->join('departments', function ($join) {
+        //     $join->on('users.Dept_name', '=', 'departments.Dept_ID');
+        // })
+        // ->paginate(100);
 
         return view('users.index', compact('users'));
     }

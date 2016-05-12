@@ -16,7 +16,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('summary', $item->Sum_ID) }}">{{ $item->Prog_Nama }}</a></td>
+                    <td><a href="{{ url('summary', $item->Sum_ID) }}">{{ $item->programs->Prog_Nama }}</a></td>
                     <td>
                         <a href="{{ url('summary/' . $item->Sum_ID . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
@@ -34,7 +34,7 @@
                           <?php 
                     if($x == '0'){
                         echo 
-                        '<td>Tidak ada summary program yang tersedia.</td><td></td><td></td><td></td><td></td><td></td>
+                        '<td>Tidak ada summary program yang tersedia.</td><td></td><td></td>
                         ';
                     }
                     ?>

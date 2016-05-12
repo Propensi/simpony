@@ -2,19 +2,19 @@
 
 @section('content')
 
-    <h1>Summary</h1>
+    <h1>rpm</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Summary ID</th><th>Nama Program</th>
+                    <th>ID.</th> <th>{{ trans('Artis_ID') }}</th><th>{{ trans('Rating') }}</th><th>{{ trans('Deskripsi') }}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $summary->Sum_ID }}</td> <td> {{ $summary->programs->Prog_Nama }} </td>
+                    <td>{{ $rpm->id }}</td> <td> {{ $rpm->Artis_ID }} </td><td> {{ $rpm->Rating }} </td><td> {{ $rpm->Deskripsi }} </td>
                 </tr>
-            </tbody>    
+            </tbody>
         </table>
     </div>
 
