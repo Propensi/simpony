@@ -433,5 +433,12 @@ public function staffview($id)
 
     }
 
+    public function membuatdatariset(Request $request) {
+
+        Assignment::create($request->all());
+
+        return('rnd/datariset');
+    }
+
 
 }
