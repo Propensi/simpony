@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Edit Jadwaltayang</h1>
+    <h1>Ubah Jadwal Tayang</h1>
     <hr/>
 
     {!! Form::model($jadwaltayang, [
