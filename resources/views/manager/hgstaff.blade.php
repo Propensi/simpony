@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Pekerjaan <a href="{{ url('assignments/create') }}" class="btn btn-primary pull-right btn-sm">Tambah Pekerjaan Baru</a></h1>
+    <h1>Assigments <a href="{{ url('assignments/create') }}" class="btn btn-primary pull-right btn-sm">Add New Assignment</a></h1>
     <div class="table">
 
                                                             <!-- TABEL 1 -->
@@ -11,7 +11,7 @@
                 <h4> Pekerjaan Staff Anda </h4>
 
                 <tr>
-                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Tgl. Deadline</th><th>Tgl. Dibuat</th><th> Tindakan </th>
+                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Deadline</th><th>Created</th><th> Action </th>
                 </tr>
             </thead>
             <tbody>
@@ -76,10 +76,10 @@
                                                             <!-- TABEL 1 -->
         <table class="table table-bordered table-striped table-hover">
             <thead>
-                <h4> Pekerjaan Staff Anda (Menunggu) </h4>
+                <h4> Pekerjaan Staff Anda (idle) </h4>
 
                 <tr>
-                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Tgl. Deadline</th><th>Tgl. Dibuat</th><th>Tindakan</th>
+                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Deadline</th><th>Created</th><th> Action </th>
                 </tr>
             </thead>
             <tbody>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Assign Pekerjaan</h1>
+    <h1>Assign Assignment</h1>
     <hr>
 
     <div class="table-responsive">
@@ -13,11 +13,12 @@
                     <th>Judul</th>
                     <th>Deskripsi</th>
                     <th>File</th>
-                    <th>Pengirim</th>
+                    <th>Sender</th>
                     <th>Departemen</th>
                     <!--<th>Head Group</th>-->
-                    <th>Tgl. Dibuat</th>
-                    <th>Tgl. Deadline</th>
+                    <th>Created at</th>
+                    <th>Deadline</th>
+                    <th>Milestone</th>
                     <th>Status</th>            
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                     <!--<td> {{ $assignment->Staff_Prog_ID_Do }}</td>-->
                     <td> {{ $assignment->Tgl_Request }}</td>
                     <td> {{ $assignment->Tgl_Deadline }} </td>
+                    <td> {{ $assignment->Milestone }}</td>
                     <td>
                     <?php  
                         if (($assignment -> Assn_Status) == '1'){
@@ -148,7 +150,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                   <th>ID Step</th><th>Judul</th><th>Deskripsi</th>
+                   <th>ID Step</th><th>Title</th><th>Deskripsi</th>
                 </tr>
             </thead>
             <tbody> 
@@ -176,7 +178,7 @@
         </table>
 
 
-       <button type="button" class="btn btn-default" data-dismiss="modal"><a href="http://localhost/TestRepo3/simpony2/public/assignments/hgstaff">Kembali</a></button>
+       <button type="button" class="btn btn-default" data-dismiss="modal"><a href="http://localhost/TestRepo3/simpony2/public/assignments/hgstaff">back</a></button>
 
        
     </div>

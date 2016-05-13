@@ -5,9 +5,9 @@
 <div class="table">
             <table class="table table-bordered table-striped table-hover">
                 <thead>
-                    <h4> Assign Pekerjaan </h4>
+                    <h4> Assign Assignment </h4>
                     <tr>
-                         <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Tgl. Deadline</th>
+                         <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Deadline</th>
                      </tr>
                 </thead>
                 <tbody>
