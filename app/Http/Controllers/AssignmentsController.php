@@ -427,5 +427,11 @@ public function staffview($id)
         return view('manager.managerview', compact('assignment', 'head', 'staff', 'steps','comments','hod','pengirim','files','stepke'));
     }
 
+    public function membuatriset(Request $request) {
+
+        return view('rnd/datariset');
+
+    }
+
 
 }
