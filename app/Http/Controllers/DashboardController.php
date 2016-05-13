@@ -20,10 +20,9 @@ class DashboardController extends Controller
      */
     public function gm()
     {
+        $current = date("Y/m/d");
+    	$jadwaltayangs = Jadwaltayang::where("Tanggal",'=',$current)->paginate(15);
 
-    	$jadwaltayangs = Jadwaltayang::paginate(15);
-
-       
         return view('dashboard.gm', compact('stats','jadwaltayangs'));
     }
 

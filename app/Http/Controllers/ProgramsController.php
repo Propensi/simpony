@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Jadwaltayang;
 use App\Summary;
 use App\Program;
 use Illuminate\Http\Request;
@@ -121,12 +122,11 @@ class ProgramsController extends Controller
 
     public function jadwalharian()
     {
-        
-        $programs1 = Program::paginate(15);
-        return view('programs.jadwalharian', compact('programs1')); //array di index
-        
+        $current = date("Y/m/d");
+
+        //$jadwaltayangs = Jadwaltayang::paginate(15);
+        $jadwaltayangs = Jadwaltayang::orderBy('Time')->where('Tanggal', '=', $current)->paginate(15);
+
+        return view('programs.jadwalharian', compact('jadwaltayangs'));        
     }
-
-
-
 }
