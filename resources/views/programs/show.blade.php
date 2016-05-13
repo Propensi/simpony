@@ -2,14 +2,14 @@
 
 @section('content')
 
-    <h1>Program</h1>
+    <h1>Program Acara</h1>
     <div class="row">
         <div class="col-md-12">
     <div class="invoice" style="margin: 0px 0px;">
             <h2>{{ $program->Prog_Nama }}</h2>
             <hr>
         
-            <h3>Deskripsi : {{ $program->Prog_Deskripsi }}</h3>
+            <h5>Deskripsi : {{ $program->Prog_Deskripsi }}</h5>
     </div>
     </div>
     </div>
@@ -75,7 +75,7 @@
     <div class="col-md-6">
         <div class="box">
              <div class="box-header with-border">
-            <h3 class="box-title">Summary</h3>
+            <h3 class="box-title">Mengelola Summary Rating</h3>
 
 
             <div class="box-tools pull-right">
@@ -88,7 +88,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>No</th><th>Tanggal</th><th>Avg. Rating</th><th>Actions</th>
+                    <th>No</th><th>Tanggal</th><th>Avg. Rating</th><th>Tindakan</th>
                 </tr>
             </thead>
             <tbody>
@@ -101,14 +101,15 @@
                     <td></td>
                     <td>
                         <a href="{{ url('summary/' . $item->Sum_ID . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                            <button type="submit" class="btn btn-primary btn-xs">Ubah</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['summary', $item->Sum_ID],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+                            'class' => 'delete'
                         ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                            {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>
@@ -132,7 +133,11 @@
 
 
      </div> 
-
+    <script>
+    $(".delete").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Menghapus Data Ini?");
+    });
+</script>
     @include('programs.modal')
      @include('programs.modalsum')
  
