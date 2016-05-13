@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Create New Jadwaltayang</h1>
+    <h1>Buat Jadwal Tayang Baru</h1>
     <hr/>
 
     {!! Form::open(['url' => '/jadwaltayangs', 'class' => 'form-horizontal']) !!}
