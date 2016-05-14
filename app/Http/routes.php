@@ -7,6 +7,9 @@ Route::get('/', function () {
 	return redirect('/home');
 });
 
+Route::get('assignments/membuatriset','AssignmentsController@membuatriset');
+Route::get('assignments/pinjamriset','AssignmentsController@pinjamriset');
+
 // harus login
 Route::group(['middleware' => 'user'], function () {
 

@@ -39,8 +39,10 @@
             <li class="treeview">
                 <a href="#"><i class="fa fa-plus"></i><span>Membuat Request</span><i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
+
                 <li><a href="{{url('assignments/create')}}">Pembuatan Promo</a></li>
-                <li><a href="#">Pembuatan Data Riset</a></li>
+                <li><a href="{{ url('assignments/membuatriset')}}">Pembuatan Data Riset</a></li>
+
             </ul>
             </li>
             <li><a href="{{url('assignments/pelacakan')}}"><i class="fa fa-search"></i><span>Melacak Request</span></a></li>
