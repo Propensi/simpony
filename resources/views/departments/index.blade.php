@@ -7,13 +7,13 @@
 
 @section('content')
 
-    <h1>Departments <a href="{{ url('departments/create') }}" class="btn btn-primary pull-right btn-sm">Add New Department</a></h1>
+    <h1>Departemen<a href="{{ url('departments/create') }}" class="btn btn-primary pull-right btn-sm">Buat Departemen Baru</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <!-- <th>S.No</th> -->
-                    <th>Department ID</th></th><th>Department Name</th><th>Actions</th>
+                    <th>ID Departemen</th></th><th>Nama Departemen</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,14 +26,14 @@
                     <td><a href="{{ url('departments', $item->Dept_ID) }}">{{ $item->Dept_Name }}</a></td>
                     <td>
                         <a href="{{ url('departments/' . $item->Dept_ID . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                            <button type="submit" class="btn btn-primary btn-xs">Ubah</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['departments', $item->Dept_ID],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                            {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>
