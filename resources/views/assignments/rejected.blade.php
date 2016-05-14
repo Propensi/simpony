@@ -4,9 +4,9 @@
 
 <table class="table table-bordered table-striped table-hover">
                 <thead>
-                    <h4> Request Ditolak </h4>
+                    <h4> Pekerjaan Ditolak </h4>
                     <tr>
-                         <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Deadline</th><th>Created</th>
+                         <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Tgl. Deadline</th><th>Tgl. Dibuat</th>
                      </tr>
                 </thead>
                 <tbody>
