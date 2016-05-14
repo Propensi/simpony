@@ -9,7 +9,8 @@
     {!! Form::model($jadwaltayang, [
         'method' => 'PATCH',
         'url' => ['/jadwaltayangs', $jadwaltayang->Jadwal_ID],
-        'class' => 'form-horizontal'
+        'class' => 'form-horizontal',
+        'class' => 'form-horizontal update'
     ]) !!}
 
                 <div class="form-group {{ $errors->has('Prog_ID') ? 'has-error' : ''}}">
@@ -56,6 +57,11 @@
             @endforeach
         </ul>
     @endif
+<script>
+    $(".update").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Mengubah Data Ini?");
+    });
+</script>
 
 </div>
 @endsection
