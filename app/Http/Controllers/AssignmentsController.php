@@ -428,8 +428,18 @@ public function staffview($id)
     }
 
     public function membuatriset(Request $request) {
+        
+        $programs = \DB::table('programs')->lists('Prog_Nama', 'Prog_Nama');
+        return view('rnd/datariset', compact('programs'));
 
-        return view('rnd/datariset');
+    }
+
+    public function pinjamriset(Request $request) {
+
+        $programs = \DB::table('programs')->lists('Prog_Nama', 'Prog_ID');
+        $summary = \DB::table('summary')->lists('Tanggal_Sum','Sum_ID');
+
+        return view('rnd/pinjamriset', compact('programs','summary'));
 
     }
 

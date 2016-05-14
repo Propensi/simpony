@@ -8,7 +8,9 @@
             <div class="form-group {{ $errors->has('Assn_Nama') ? 'has-error' : ''}}">
                 {!! Form::label('Assn_Nama', 'Nama Program :', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('Assn_Nama', null, ['class' => 'form-control', 'required'=> 'required']) !!}
+
+                    {!! Form::select('Assn_Nama', $programs, null, ['class' => 'form-control', 'required'=> 'required']) !!}
+
                     {!! $errors->first('Assn_Nama', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
