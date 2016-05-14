@@ -8,7 +8,8 @@
     {!! Form::model($department, [
         'method' => 'PATCH',
         'url' => ['departments', $department->Dept_ID],
-        'class' => 'form-horizontal'
+        'class' => 'form-horizontal',
+        'class' => 'form-horizontal update'
     ]) !!}
 
                 <div class="form-group {{ $errors->has('Dept_Name') ? 'has-error' : ''}}">
@@ -18,13 +19,12 @@
                     {!! $errors->first('Dept_Name', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-
-
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Ubah', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Perbaharui', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
+
     {!! Form::close() !!}
 
     @if ($errors->any())
@@ -34,5 +34,9 @@
             @endforeach
         </ul>
     @endif
-
+<script>
+    $(".update").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Mengubah Data Ini?");
+    });
+</script>
 @endsection
