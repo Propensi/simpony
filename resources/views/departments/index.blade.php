@@ -31,7 +31,8 @@
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['departments', $item->Dept_ID],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+                            'class' => 'delete'
                         ]) !!}
                             {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
@@ -43,4 +44,9 @@
         <div class="pagination"> {!! $departments->render() !!} </div>
     </div>
 
+<script>
+    $(".delete").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Menghapus Data Ini?");
+    });
+</script>
 @endsection
