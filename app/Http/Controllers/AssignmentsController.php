@@ -239,9 +239,8 @@ class AssignmentsController extends Controller
         $steps = Step::where('Assn_ID','=',$id)->paginate(15);
         $eser = \DB::table('users')->where('role','=','Staff')->lists('name', 'user_ID');
         $assignment = Assignment::findOrFail($id);
-        //$step = \DB::table('steps')->where('Assn_ID','=',$id);
-        //$assignment->update($request->all());
-        return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps);
+        $min = \DB::table('steps')->where('Assn_ID','=',$id)->max('bobot') + 1;
+        return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps)->with('min',$min);
     }
 
     public function listAccepted()

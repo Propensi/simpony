@@ -2,6 +2,28 @@
 
 @section('content')
 
+<head>
+<script src"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/bootstrap-slider.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/bootstrap-slider.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/css/bootstrap-slider.css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/css/bootstrap-slider.min.css" rel="stylesheet">
+
+</head>
+
+<span id="ex18-label-1" class="hidden">Example slider label</span>
+        <input id="ex19" type="text"
+              data-provide="slider"
+              data-slider-ticks="[1, 2, 3]"
+              data-slider-ticks-labels='["short", "medium", "long"]'
+              data-slider-min="1"
+              data-slider-max="3"
+              data-slider-step="1"
+              data-slider-value="3"
+              data-slider-tooltip="show" />
+
     <h1>Assign Pekerjaan</h1>
     <hr>
 
@@ -115,7 +137,13 @@
                 <div class="form-group {{ $errors->has('Step') ? 'has-error' : ''}}">
                 {!! Form::label('bobot', 'Bobot: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('bobot', null, ['class' => 'form-control']) !!}
+                    
+                    <input type="number" class ="form-control" name="bobot" min={{$min}} max="100"> 
+                    <?php if(!is_null($min)) {
+
+                           echo '<p>minimal : '.$min.'</p>';
+                       }
+                    ?>
                     {!! $errors->first('Step', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -180,5 +208,7 @@
 
        
     </div>
+
+
 
 @endsection
