@@ -107,7 +107,7 @@ $(document).ready(function() {
 
                         <div class="col-md-4">
                             <h4> Files </h4>
-                            <a href=""></i> {{$assignment->Assn_File}}</a>
+                            <a href="http://localhost/simpony/resources/uploads/{{$assignment->Assn_File}}") }}" download></i> {{$assignment->Assn_File}}</a>
                         </div>
                     </div>
 
@@ -269,12 +269,18 @@ $(document).ready(function() {
                         @foreach($files as $item)
 
                         <?php
-                        echo '<a class="test-popup-link" href="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'"><img src="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'" alt="..." height="150"  class="test-popup-link" ></a>';
+                        if((substr($item->File,-3)) == "jpg" || (substr($item->File,-3)) == "png") {
+                        echo '<a class="test-popup-link" href="http://localhost/simpony/resources/uploads/'.$item->File.'"><img src="http://localhost/simpony/resources/uploads/'.$item->File.'" alt="..." height="150"  class="test-popup-link" ></a>';
+                        } else {
+                          echo '<a href="http://localhost/simpony/resources/uploads/'.$item->File.'" download><button type="button" class="btn btn-primary btn-md">'. $item->File  .'</button></a>';
+                        }
+
                         ?>
 
                         @endforeach
 
-                        <br />
+                        <br>
+                        <br>
                         <hr>
                         
 

@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-    <h1>Create Request Form </h1>
+    <h1>Permintaan Pembuatan Promo</h1>
     <hr/>
     {!! Form::open(['url' => 'assignments', 'class' => 'form-horizontal', 'files' => true]) !!}
 
@@ -41,7 +41,7 @@
             </div>
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Buat', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}

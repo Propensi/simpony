@@ -37,13 +37,15 @@
             @include('layouts.generalmanager')
             @endif
             <li class="treeview">
-                <a href="#"><i class="fa fa-dashboard"></i><span>Membuat Assignment</span><i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-plus"></i><span>Membuat Request</span><i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                <li><a href="{{url('assignments/create')}}">Pembuatan Iklan</a></li>
+
+                <li><a href="{{url('assignments/create')}}">Pembuatan Promo</a></li>
                 <li><a href="{{ url('assignments/membuatriset')}}">Pembuatan Data Riset</a></li>
+
             </ul>
             </li>
-            <li><a href="{{url('assignments/pelacakan')}}"><i class="fa fa-files-o"></i><span>Melacak Assignment</span></a></li>
+            <li><a href="{{url('assignments/pelacakan')}}"><i class="fa fa-search"></i><span>Melacak Request</span></a></li>
           
 
             @if(Auth::user()->role == 'Head of Dept')

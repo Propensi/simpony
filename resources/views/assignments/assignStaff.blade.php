@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Assign Assignment</h1>
+    <h1>Assign Pekerjaan</h1>
     <hr>
 
     <div class="table-responsive">
@@ -13,12 +13,11 @@
                     <th>Judul</th>
                     <th>Deskripsi</th>
                     <th>File</th>
-                    <th>Sender</th>
+                    <th>Pengirim</th>
                     <th>Departemen</th>
                     <!--<th>Head Group</th>-->
-                    <th>Created at</th>
-                    <th>Deadline</th>
-                    <th>Milestone</th>
+                    <th>Tgl. Dibuat</th>
+                    <th>Tgl. Deadline</th>
                     <th>Status</th>            
                 </tr>
             </thead>
@@ -33,7 +32,6 @@
                     <!--<td> {{ $assignment->Staff_Prog_ID_Do }}</td>-->
                     <td> {{ $assignment->Tgl_Request }}</td>
                     <td> {{ $assignment->Tgl_Deadline }} </td>
-                    <td> {{ $assignment->Milestone }}</td>
                     <td>
                     <?php  
                         if (($assignment -> Assn_Status) == '1'){
@@ -117,7 +115,13 @@
                 <div class="form-group {{ $errors->has('Step') ? 'has-error' : ''}}">
                 {!! Form::label('bobot', 'Bobot: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('bobot', null, ['class' => 'form-control']) !!}
+                    
+                    <input type="number" class ="form-control" name="bobot" min={{$min}} max="100"> 
+                    <?php if(!is_null($min)) {
+
+                           echo '<p>minimal : '.$min.'</p>';
+                       }
+                    ?>
                     {!! $errors->first('Step', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -150,7 +154,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                   <th>ID Step</th><th>Title</th><th>Deskripsi</th>
+                   <th>ID Step</th><th>Judul</th><th>Deskripsi</th>
                 </tr>
             </thead>
             <tbody> 
@@ -178,9 +182,11 @@
         </table>
 
 
-       <button type="button" class="btn btn-default" data-dismiss="modal"><a href="http://localhost/TestRepo3/simpony2/public/assignments/hgstaff">back</a></button>
+       <button type="button" class="btn btn-default" data-dismiss="modal"><a href="http://localhost/TestRepo3/simpony2/public/assignments/hgstaff">Kembali</a></button>
 
        
     </div>
+
+
 
 @endsection
