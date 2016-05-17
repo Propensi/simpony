@@ -10,7 +10,7 @@ Route::get('/', function () {
 Route::get('assignments/membuatriset','AssignmentsController@membuatriset');
 Route::get('assignments/pinjamriset','AssignmentsController@pinjamriset');
 Route::get('plansched/programs','ProgramsController@indexps');
-
+Route::get('plansched/programs/{Prog_ID}','ProgramsController@showps');
 
 // harus login
 Route::group(['middleware' => 'user'], function () {

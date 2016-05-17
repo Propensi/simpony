@@ -15,7 +15,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('programs', $item->Prog_ID) }}">{{ $item->Prog_Nama }}</a></td><td>{{ $item->Prog_Deskripsi }}</td>
+                    <td><a href="{{ url('/plansched/programs', $item->Prog_ID) }}">{{ $item->Prog_Nama }}</a></td><td>{{ $item->Prog_Deskripsi }}</td>
                     <td>
                         <a href="{{ url('programs/' . $item->Prog_ID . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Ubah</button>

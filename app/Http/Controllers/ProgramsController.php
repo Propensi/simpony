@@ -78,6 +78,12 @@ class ProgramsController extends Controller
         return view('programs.show', compact('program', 'artists', 'artis','summary'));
     }
 
+    public function showps($Prog_ID)
+    {
+        $program = Program::findOrFail($Prog_ID);
+
+        return view('plansched/.show', compact('program'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
