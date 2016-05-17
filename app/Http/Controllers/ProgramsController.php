@@ -82,7 +82,9 @@ class ProgramsController extends Controller
     {
         $program = Program::findOrFail($Prog_ID);
 
-        return view('plansched/.show', compact('program'));
+        $jadwaltayangs = Jadwaltayang::where('Prog_ID','=',$Prog_ID)->paginate(15);
+
+        return view('plansched/.show', compact('program','jadwaltayangs'));
     }
     /**
      * Show the form for editing the specified resource.
