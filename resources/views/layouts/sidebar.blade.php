@@ -56,12 +56,17 @@
             @include('layouts.hg')
             @endif
             
-            @if(Auth::user()->role == 'Staff')
+            @if(Auth::user()->role == 'Staff' && Auth::user()->Dept_name != '6' )
             @include('layouts.staff')
             @endif
 
             @if(Auth::user()->role == 'Admin')    
-        @include('layouts.admin')
+            @include('layouts.admin')
+
+            @endif
+
+            @if(Auth::user()->Dept_name == '6')    
+            @include('layouts.ps')
 
             @endif
 
