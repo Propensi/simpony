@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
+    
     <h1>Rating Per Menit <a href="{{ url('/rpm/create') }}" class="btn btn-primary pull-right btn-sm">Add New rpm</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
@@ -18,10 +18,10 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->artist->Nama_Artis }}</a></td><td>{{ $item->Rating }}</td><td>{{ $item->Deskripsi }}</td>
                     <td>
-                        <a href="{{ url('/rpm/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Update</a>
+                        <a href="{{ url('/rpm/' . $item->Rpm_ID . '/edit') }}" class="btn btn-primary btn-xs">Update</a>
                         {!! Form::open([
                             'method'=>'DELETE',
-                            'url' => ['/rpm', $item->id],
+                            'url' => ['/rpm', $item->Rpm_ID],
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}

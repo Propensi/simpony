@@ -23,4 +23,9 @@ class Artprog extends Model
     protected $fillable = ['artprog_ID', 'Prog_ID', 'Artis_ID'];
     public $timestamps = false;
 
+
+ public function artis()
+    {
+        return $this->hasMany('App\Artist','Artis_ID','Artis_ID');
+    }
 }

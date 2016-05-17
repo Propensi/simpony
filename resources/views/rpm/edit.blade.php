@@ -7,7 +7,7 @@
 
     {!! Form::model($rpm, [
         'method' => 'PATCH',
-        'url' => ['/rpm', $rpm->id],
+        'url' => ['/rpm', $rpm->Rpm_ID],
         'class' => 'form-horizontal'
     ]) !!}
 
