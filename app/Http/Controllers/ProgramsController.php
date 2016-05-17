@@ -28,6 +28,12 @@ class ProgramsController extends Controller
         return view('programs.index', compact('programs'));
     }
 
+    public function indexps()
+    {
+        $programs = Program::paginate(15);
+
+        return view('plansched/programs', compact('programs'));
+    }
     /**
      * Show the form for creating a new resource.
      *

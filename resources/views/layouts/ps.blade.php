@@ -1,2 +1,2 @@
-<li ><a href ="{{url('programs')}}"><i class="fa fa-files-o"></i><span>Mengelola Program</span></a></li>
+<li ><a href ="{{url('plansched/programs')}}"><i class="fa fa-files-o"></i><span>Mengelola Program</span></a></li>
 <li ><a href ="{{url('jadwaltayangs')}}"><i class="fa fa-files-o"></i><span>Mengelola Jadwal Tayang</span></a></li>
