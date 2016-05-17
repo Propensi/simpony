@@ -9,6 +9,7 @@ use App\Summary;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use App\Program;
 use Illuminate\Support\Facades\Redirect;
 
 class SummaryController extends Controller
@@ -101,7 +102,16 @@ class SummaryController extends Controller
 
         Session::flash('flash_message', 'Summary updated!');
 
-        return redirect('summary');
+        $Prog_ID = $summary->Prog_ID;
+
+        $program = Program::findOrFail($Prog_ID);
+        $artists = \DB::table('artisprograms')->where('Prog_ID', '=' , $Prog_ID)->join('artists', function ($join) {
+            $join->on('artisprograms.Artis_ID','=','artists.Artis_ID');
+        })->get();
+        $artis = \DB::table('artists')->lists('Nama_Artis', 'Artis_ID');
+        $summary = Summary::where('Prog_ID','=',$Prog_ID)->paginate(15);
+
+        return view('programs.show', compact('program', 'artists', 'artis','summary'));
     }
 
     /**

@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Artis ID</th><th>Nama Artis</th><th>Actions</th>
+                    <th>No.</th><th>Nama Artis</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,7 +16,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <!-- <td>{{ $x }}</td> -->
-                    <td>{{ $item->Artis_ID }}</td><td><a href="{{ url('artists', $item->Artis_ID) }}">{{ $item->Nama_Artis }}</a></td>
+                    <td>{{ $x }}</td><td><a href="{{ url('artists', $item->Artis_ID) }}">{{ $item->Nama_Artis }}</a></td>
                     <td>
                         <a href="{{ url('artists/' . $item->Artis_ID . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
