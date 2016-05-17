@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
+    
     <h1>Rating Per Menit <a href="{{ url('/rpm/create') }}" class="btn btn-primary pull-right btn-sm">Add New rpm</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
