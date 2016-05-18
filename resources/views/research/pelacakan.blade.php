@@ -21,10 +21,19 @@
                     <td>{{ $item->Deskripsi }}</td>
                     <td>
                         <a href="{{ url('assignments2/' . $item->Assn_ID . '/staff') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Membuat Summary Rating</button>
-                        </a> 
-                    
-                    </td>
+                            <button type="submit" class="btn btn-primary btn-xs">Membuat Summary</button>
+                        </a> /  
+                                    {!! Form::model($assignments2, [
+                                              'method' => 'PATCH',
+                                              'url' => ['assignments2/update', $item->Assn_ID],
+                                              'class' => '']) !!}
+                                              
+                                               {!! Form::hidden('Status', 'Ditolak' ) !!}
+
+                                     {!! Form::submit('Tolak', ['class' => 'btn btn-danger btn-xs'])  !!}
+                                      
+                                      {!! Form::close() !!}      
+                                </td>
                 </tr>
             @endforeach
             </tbody>

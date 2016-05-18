@@ -16,6 +16,7 @@ Route::get('assignments2/membuatriset','Assignments2Controller@membuatriset');
 Route::post('assignments2','Assignments2Controller@store');
 Route::get('assignments2/{Assn_ID}/staff','Assignments2Controller@staff');
 Route::get('assignments2/pelacakan','Assignments2Controller@pelacakan');
+Route::patch('assignments2/update/{Assn_ID}','Assignments2Controller@update');
 
 
 // harus login

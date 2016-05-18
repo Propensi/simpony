@@ -96,4 +96,17 @@ public function pelacakan()
         return view('rnd/datariset', compact('programs'));
     }
 
+
+    public function update($id, Request $request)
+    {
+        
+        $assignments2 = Assignment2::findOrFail($id);
+
+        $assignments2->update($request->all());
+
+        Session::flash('flash_message', 'assignments2 updated!');
+
+        return Redirect::back();
+    }
+
 }
