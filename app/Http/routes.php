@@ -7,11 +7,17 @@ Route::get('/', function () {
 	return redirect('/home');
 });
 
-Route::get('assignments/membuatriset','AssignmentsController@membuatriset');
+
 Route::get('assignments/pinjamriset','AssignmentsController@pinjamriset');
 Route::get('plansched/programs','ProgramsController@indexps');
 Route::get('plansched/programs/{Prog_ID}','ProgramsController@showps');
 Route::post('jadwaltayangs2', 'JadwaltayangsController@jadwaltayangs2');
+Route::get('assignments2/membuatriset','Assignments2Controller@membuatriset');
+Route::post('assignments2','Assignments2Controller@store');
+Route::get('assignments2/{Assn_ID}/staff','Assignments2Controller@staff');
+Route::get('assignments2/pelacakan','Assignments2Controller@pelacakan');
+Route::patch('assignments2/update/{Assn_ID}','Assignments2Controller@update');
+
 
 // harus login
 Route::group(['middleware' => 'user'], function () {
