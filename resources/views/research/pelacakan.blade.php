@@ -15,7 +15,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('assignments2', $item->Assn_ID) }}">{{ $item->program->Prog_Nama }}</a></td>
+                    <td><a href="{{ url('assignments2/'.$item->Assn_ID.'/klien') }}">{{ $item->program->Prog_Nama }}</a></td>
                     <td>{{ $item->Tanggal }}</td>
                     <td>{{ $item->Status }}</td>
                     <td>{{ $item->Deskripsi }}</td>

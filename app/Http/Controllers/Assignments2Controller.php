@@ -132,15 +132,29 @@ public function pelacakan()
 
         //klo $request ditolak
         if($request->Status == 'Proses') {
-            $duplikasi = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal)->first();
+            if($assignments2->Status == 'Ditolak') {
+            $assignments2->update(array("Status" => 'Proses'));
+            return redirect('assignments2/index');
+            }
+        }
+
+        if($request->Status == 'Proses') {
+            $duplikasi = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal_Sum)->first();
         
-            if($duplikasi != null) {
+            if(!is_null($duplikasi)) {
+                if($assignments2->Status == 'Menunggu') { 
+                    $assignments2->update(array("Sum_ID" => $duplikasi->Sum_ID, "Status" => 'Proses'));
+                }
                     return Redirect::back();
+                
             }
 
         Summary::create($request->all());
+        $sum = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal_Sum)->first();
 
-        }   
+        $assignments2->update(array("Sum_ID" => $sum->Sum_ID));
+        }
+
 
         $assignments2->update($request->all());
 
