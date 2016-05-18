@@ -428,7 +428,7 @@ public function staffview($id)
 
     public function membuatriset(Request $request) {
         
-        $programs = \DB::table('programs')->lists('Prog_Nama', 'Prog_Nama');
+        $programs = \DB::table('programs')->lists('Prog_Nama', 'Prog_ID');
         return view('rnd/datariset', compact('programs'));
 
     }
