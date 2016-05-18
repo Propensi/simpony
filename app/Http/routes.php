@@ -50,6 +50,7 @@ Route::group(['middleware' => 'Staff'], function () {
 
 // minimal HG
 Route::group(['middleware' => 'HG'], function () {
+	Route::get('hg', 'DashboardController@hg');
 	Route::get('assignments/hgstaff', 'AssignmentsController@hgstaff');
 	Route::get('assignments/{Assn_ID}/managerview', 'AssignmentsController@managerview');
 	Route::get('assignments/{Assn_ID}/assignStaff', 'AssignmentsController@assignStaff');

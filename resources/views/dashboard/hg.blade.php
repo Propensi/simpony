@@ -3,28 +3,14 @@
 @section('content')
 
 <div class="row">
-        <div class="col-lg-4 col-xs-4">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>{{ $total }}</h3>
-
-              <p>Pekerjaan Divisi</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            
-          </div>
-        </div>
-        <!-- ./col -->
+        
         <div class="col-lg-4 col-xs-4">
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
               <h3>{{ $promosi }}</h3>
 
-              <p>Promotions</p>
+              <p>Pekerjaan</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -33,23 +19,6 @@
           </div>
         </div>
 
-        
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-4">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>{{$research}}</h3>
-
-              <p>Research & Dev.</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            
-          </div>
-        </div>
-        <!-- ./col -->
       </div>
 
       <div class="row">
