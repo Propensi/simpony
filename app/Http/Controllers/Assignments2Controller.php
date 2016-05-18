@@ -36,10 +36,25 @@ public function indexstaff()
 
 public function pelacakan()
     {
-        $assignments2 = Assignment2::paginate(15);
+        $assignments2 = Assignment2::where('Sender','=',Auth::user()->user_ID)->where('Status','!=','Ditolak')->paginate(15);
 
         return view('research.pelacakan', compact('assignments2'));
     }
+
+    public function index()
+    {
+        $assignments2 = Assignment2::where('Status','!=','Ditolak')->paginate(15);
+
+        return view('research.melihat', compact('assignments2'));
+    }
+
+    public function indexditolak()
+    {
+        $assignments2 = Assignment2::where('Status','=','Ditolak')->paginate(15);
+
+        return view('research.melihat', compact('assignments2'));
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -56,9 +71,9 @@ public function pelacakan()
                     return Redirect::back()->withErrors($error);
         }
 
-        Assignment2::create(array('Prog_ID' => $request->Prog_ID, 'Tanggal' => $request->Tanggal, 'Deksripsi' => $request->Deskripsi, 'Staff' => $request->Staff, 'Dept_ID' => $request->Dept_ID, 'Sender' => $request->Sender));
+        Assignment2::create(array('Prog_ID' => $request->Prog_ID, 'Tanggal' => $request->Tanggal, 'Deksripsi' => $request->Deskripsi, 'Staff' => $request->Staff, 'Dept_ID' => $request->Dept_ID, 'Sender' => $request->Sender, 'Status' => $request->Status));
 
-        return Redirect::back();
+        return redirect('assignments2/pelacakan');
     }
 
     /**
@@ -80,8 +95,21 @@ public function pelacakan()
 
         $rating = \DB::table('ratingpermenit')->where('Sum_ID','=',$assignments2->Sum_ID)->avg('Rating');
 
-        return view('research.staff', compact('summary','rpm','artis','rating'));
+        return view('research.staff', compact('summary','rpm','artis','rating','assignments2'));
     }
+
+
+    public function klien($id)
+    {
+        $assignments2 = Assignment2::findOrFail($id);
+        $summary = Summary::where('Sum_ID','=', $assignments2->Sum_ID)->first();
+        $rpm = Rpm::where('Sum_ID','=',$assignments2->Sum_ID)->get();
+
+        $rating = \DB::table('ratingpermenit')->where('Sum_ID','=',$assignments2->Sum_ID)->avg('Rating');
+
+        return view('research.klien', compact('summary','rpm','rating','assignments2'));
+    }
+
 
         public function show($id)
     {
@@ -102,7 +130,21 @@ public function pelacakan()
         
         $assignments2 = Assignment2::findOrFail($id);
 
+        //klo $request ditolak
+        if($request->Status == 'Proses') {
+            $duplikasi = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal)->first();
+        
+            if($duplikasi != null) {
+                    return Redirect::back();
+            }
+
+        Summary::create($request->all());
+
+        }   
+
         $assignments2->update($request->all());
+
+        //kasi email penolakan
 
         Session::flash('flash_message', 'assignments2 updated!');
 
