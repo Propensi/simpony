@@ -98,7 +98,7 @@
                 <tr>
                     <td>{{ $x }}</td>
                     <td><a href="{{ url('summary/rpm', $item->Sum_ID) }}">{{ $item->Tanggal_Sum }}</a></td>
-                    <td></td>
+                    <td>{{ $item->Average_Rating }}</td>
                     <td>
                         <a href="{{ url('summary/' . $item->Sum_ID . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Ubah</button>

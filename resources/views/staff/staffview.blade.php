@@ -213,7 +213,7 @@ $(document).ready(function() {
                         @foreach($files as $item)
 
                         <?php
-                        echo '<a class="test-popup-link" href="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'"><img src="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'" alt="..." height="150"  class="test-popup-link" ></a>';
+                        echo '<a class="test-popup-link" href="http://localhost/simpony/resources/uploads/'.$item->File.'"><img src="http://localhost/simpony/resources/uploads/'.$item->File.'" alt="..." height="150"  class="test-popup-link" ></a>';
                         ?>
 
                         @endforeach

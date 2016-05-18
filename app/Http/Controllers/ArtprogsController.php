@@ -68,7 +68,7 @@ class ArtprogsController extends Controller
     public function show($artprog_ID)
     {
         $artprog = Artprog::findOrFail($artprog_ID);
-        $artists = Artist::paginate(15);
+        $artists = Artist::paginate(30);
 
         return view('artprog.show', compact('artprog', 'artists'));
     }

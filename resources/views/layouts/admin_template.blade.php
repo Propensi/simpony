@@ -8,13 +8,13 @@
         <meta charset="UTF-8">
         <title>Simponi | Dashboard</title>
         <!-- Magnific Popup core CSS file -->
-<link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+        <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
 
-<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<!-- Magnific Popup core JS file -->
-<script src="magnific-popup/jquery.magnific-popup.js"></script>
+        <!-- Magnific Popup core JS file -->
+        <script src="magnific-popup/jquery.magnific-popup.js"></script>
 
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
@@ -53,6 +53,15 @@
           <!-- bootstrap wysihtml5 - text editor -->
           <link rel="stylesheet" href="{{ asset("/bower_components/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
 
+          <link type="text/css" href="{{ asset("/bower_components/adminlte/plugins/timepicker/bootstrap-timepicker.min.css" )}}"/>
+
+          <script type="text/javascript" src="{{ asset("/bower_components/adminlte/plugins/timepicker/bootstrap-timepicker.min.js" )}}"></script>
+
+          <script src"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/bootstrap-slider.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/bootstrap-slider.min.js"></script>
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/css/bootstrap-slider.css" rel="stylesheet">
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/css/bootstrap-slider.min.css" rel="stylesheet">
+          
     </head>
     <body class="skin-blue sidebar-mini">
     <div class="wrapper">
@@ -85,6 +94,7 @@
     <!-- REQUIRED JS SCRIPTS -->
 
     <!-- jQuery 2.1.3 -->
+    <script type="text/javascript" src="{{ asset("/bower_components/adminlte/plugins/timepicker/bootstrap-timepicker.min.js" )}}"></script>
     <script src="{{ asset ("/bower_components/adminlte/plugins/jQuery/jQuery-2.2.0.min.js") }}"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="{{ asset ("/bower_components/adminlte/bootstrap/js/bootstrap.min.js") }}" type="text/javascript"></script>

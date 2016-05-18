@@ -33,10 +33,12 @@
 
 <hr>
 
-    <h3>Menambahkan Artis Baru</h3>
+<button type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#demo">Menambahkan Artis Baru</button>   
+
+    <div id="demo" class="collapse">
    {!! Form::open(['url' => 'artists/save', 'class' => 'form-horizontal']) !!}
 
-               
+             <h3>Menambahkan Artis</h3>   
             <div class="form-group {{ $errors->has('Nama_Artis') ? 'has-error' : ''}}">
                 {!! Form::label('Nama_Artis', 'Nama Artis: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -52,6 +54,7 @@
         </div>
     </div>
     {!! Form::close() !!}
+    </div>
 
     @if ($errors->any())
         <ul class="alert alert-danger">
