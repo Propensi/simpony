@@ -67,8 +67,9 @@ public function pelacakan()
     	$duplikasi = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal)->first();
         
         if(!is_null($duplikasi)) {
-                    $error = "Summary sudah ada di Program ini, silahkan melihat di halaman program.";
-                    return Redirect::back()->withErrors($error);
+            Assignment2::create(array('Prog_ID' => $request->Prog_ID, 'Tanggal' => $request->Tanggal, 'Deksripsi' => $request->Deskripsi, 'Staff' => $request->Staff, 'Dept_ID' => $request->Dept_ID, 'Sender' => $request->Sender, 'Status' => $request->Status , 'Sum_ID' => $duplikasi->Sum_ID));
+
+                return redirect('assignments2/pelacakan');
         }
 
         Assignment2::create(array('Prog_ID' => $request->Prog_ID, 'Tanggal' => $request->Tanggal, 'Deksripsi' => $request->Deskripsi, 'Staff' => $request->Staff, 'Dept_ID' => $request->Dept_ID, 'Sender' => $request->Sender, 'Status' => $request->Status));
@@ -103,9 +104,18 @@ public function pelacakan()
     {
         $assignments2 = Assignment2::findOrFail($id);
         $summary = Summary::where('Sum_ID','=', $assignments2->Sum_ID)->first();
+        if($assignments2->Status == 'Menunggu') {
+            $rpm = [];
+            $rating = '';    
+        } elseif ($assignments2->Status == 'Ditolak') {
+            $rpm = [];
+            $rating = '';
+        } else {
         $rpm = Rpm::where('Sum_ID','=',$assignments2->Sum_ID)->get();
-
         $rating = \DB::table('ratingpermenit')->where('Sum_ID','=',$assignments2->Sum_ID)->avg('Rating');
+        }
+
+        
 
         return view('research.klien', compact('summary','rpm','rating','assignments2'));
     }

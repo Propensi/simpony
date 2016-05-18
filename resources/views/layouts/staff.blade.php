@@ -6,4 +6,5 @@
 
 @if(Auth::user()->Dept_name == '3')
 <li ><a href ="{{url('assignments/pekerjaanstaff')}}"><i class="fa fa-files-o"></i><span>Melihat Pekerjaan</span></a></li>
+
 @endif
