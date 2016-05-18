@@ -28,6 +28,12 @@ class ProgramsController extends Controller
         return view('programs.index', compact('programs'));
     }
 
+    public function indexps()
+    {
+        $programs = Program::paginate(15);
+
+        return view('plansched/programs', compact('programs'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -72,6 +78,14 @@ class ProgramsController extends Controller
         return view('programs.show', compact('program', 'artists', 'artis','summary'));
     }
 
+    public function showps($Prog_ID)
+    {
+        $program = Program::findOrFail($Prog_ID);
+
+        $jadwaltayangs = Jadwaltayang::where('Prog_ID','=',$Prog_ID)->paginate(15);
+
+        return view('plansched/.show', compact('program','jadwaltayangs'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

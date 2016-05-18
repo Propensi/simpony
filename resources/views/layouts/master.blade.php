@@ -7,6 +7,7 @@
 	<title>Laravel CRUD App</title>
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet">
+	
 	<style>
 		body {
 			padding-top: 70px;

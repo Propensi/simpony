@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Department','Dept_name','Dept_ID');
     }
+
+    public function nama()
+    {
+        return $this->hasMany('App\Assignment2','user_ID','Sender');
+    }
 }

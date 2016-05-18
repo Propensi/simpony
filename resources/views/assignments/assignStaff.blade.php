@@ -115,7 +115,13 @@
                 <div class="form-group {{ $errors->has('Step') ? 'has-error' : ''}}">
                 {!! Form::label('bobot', 'Bobot: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('bobot', null, ['class' => 'form-control']) !!}
+                    
+                    <input type="number" class ="form-control" name="bobot" min={{$min}} max="100"> 
+                    <?php if(!is_null($min)) {
+
+                           echo '<p>minimal : '.$min.'</p>';
+                       }
+                    ?>
                     {!! $errors->first('Step', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -180,5 +186,7 @@
 
        
     </div>
+
+
 
 @endsection
