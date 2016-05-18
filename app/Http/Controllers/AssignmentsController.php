@@ -427,5 +427,28 @@ public function staffview($id)
         return view('manager.managerview', compact('assignment', 'head', 'staff', 'steps','comments','hod','pengirim','files','stepke'));
     }
 
+    public function membuatriset(Request $request) {
+        
+        $programs = \DB::table('programs')->lists('Prog_Nama', 'Prog_Nama');
+        return view('rnd/datariset', compact('programs'));
+
+    }
+
+    public function pinjamriset(Request $request) {
+
+        $programs = \DB::table('programs')->lists('Prog_Nama', 'Prog_ID');
+        $summary = \DB::table('summary')->lists('Tanggal_Sum','Sum_ID');
+
+        return view('rnd/pinjamriset', compact('programs','summary'));
+
+    }
+
+    public function membuatdatariset(Request $request) {
+
+        Assignment::create($request->all());
+
+        return('rnd/datariset');
+    }
+
 
 }
