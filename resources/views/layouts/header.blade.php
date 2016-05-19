@@ -28,7 +28,7 @@
                         <span class="label label-warning">!</span>
                     </a>
 
-                    <?php $notifikasis = DB::table('notifikasis')->where('Receiver','=',Auth::user()->user_ID)->get(); 
+                    <?php $notifikasis = DB::table('notifikasis')->where('Receiver','=',Auth::user()->user_ID)->orderBy('created_at', 'ASC')->get(); 
                         $users = DB::table('users')->get();
                         $assignments = DB::table('assignments')->get();
 
@@ -41,9 +41,12 @@
                                 <li><!-- start notification -->
                                     @foreach($notifikasis as $items)
                                     <a href="#">
-                                        <i class="fa fa-users text-aqua"> {{ $items->Title }}</i>
+                                        <i class="fa fa-users text-aqua">{{ $items->Title }}</i>
                                     </a>
                                     @endforeach
+
+                                    <?php if(empty($notifikasis)) { echo'<a>Tidak ada notifikasi</a>';} ?></i>
+                                    
                                 </li><!-- end notification -->
                             </ul>
                         </li>
