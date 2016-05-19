@@ -17,28 +17,28 @@
             <div class="form-group {{ $errors->has('Name') ? 'has-error' : ''}}">
                 {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control','required'=> 'required']) !!}
                     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('no_peg') ? 'has-error' : ''}}">
                 {!! Form::label('no_peg', 'No Peg: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('no_peg', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('no_peg', null, ['class' => 'form-control','required'=> 'required']) !!}
                     {!! $errors->first('no_peg', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
                 {!! Form::label('email', 'Email: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('email', null, ['class' => 'form-control','required'=> 'required']) !!}
                     {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
                 {!! Form::label('password', 'Password: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::password('password', null, ['class' => 'form-control']) !!}
+                    {!! Form::password('password', null, ['class' => 'form-control','required'=> 'required']) !!}
                     {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

@@ -12,7 +12,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $user->user_ID }}</td> <td> {{ $user->name }} </td><td> {{ $user->no_peg }} </td><td> {{ $user->email }} </td><td> {{ $user->role }} </td><td> {{ $user->Dept_name }} </td>
+                    <td>{{ $user->user_ID }}</td> <td> {{ $user->name }} </td><td> {{ $user->no_peg }} </td><td> {{ $user->email }} </td><td> {{ $user->role }} </td><td> {{ $user->departments->Dept_Name }} </td>
                 </tr>
             </tbody>    
         </table>
