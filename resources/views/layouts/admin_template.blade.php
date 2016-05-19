@@ -6,7 +6,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Simponi | Dashboard</title>
+        <title>Simponi</title>
         <!-- Magnific Popup core CSS file -->
         <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
 

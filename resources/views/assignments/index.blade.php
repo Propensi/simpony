@@ -1,6 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
+@include('layouts.flash')
 
     <h1>Daftar Pekerjaan <a href="{{ url('assignments/create') }}" class="btn btn-primary pull-right btn-sm">Tambah Pekerjaan Baru</a></h1>
     <div class="table">
@@ -44,7 +45,8 @@
                       {!! Form::open([
                             'method'=>'PATCH',
                             'url' => ['assignments', $item->Assn_ID],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+                            'class' => 'form-horizontal update'
                         ]) !!}
                             {!! Form::submit('Setujui', ['class' => 'btn btn-primary btn-xs'] ) !!}
                             {!! Form::hidden('Assn_Status','1') !!}
@@ -56,7 +58,8 @@
                     {!! Form::open([
                             'method'=>'PATCH',
                             'url' => ['assignments', $item->Assn_ID],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+                            'class' => 'form-horizontal delete'
                         ]) !!}
                             {!! Form::submit('Tolak', ['class' => 'btn btn-danger btn-xs'] ) !!}
                             {!! Form::hidden('Assn_Status','2') !!}
@@ -73,6 +76,7 @@
                     ?>
                 </tbody>
         </table>
+        <div class="pagination"> {!! $assignments0->render() !!} </div>
                                                     <!-- TABEL 2 -->
 
             <!--request diterima-->
@@ -114,5 +118,15 @@
     <div class="pagination"> {!! $assignments1->render() !!}</div>
     
     </div>
+
+    <script>
+    $(".update").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Menyetujui Pekerjaan Ini?");
+    });
+
+        $(".delete").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Menolak Pekerjaan Ini?");
+    });
+</script>
     
 @endsection

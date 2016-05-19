@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
+@include('layouts.flash')
     <h1>Pekerjaan <a href="{{ url('assignments/create') }}" class="btn btn-primary pull-right btn-sm">Tambah Pekerjaan Baru</a></h1>
     <div class="table">
 
@@ -64,6 +64,7 @@
                     ?>
                 </tbody>
         </table>
+        <div class="pagination"> {!! $assignments0->render() !!} </div>
 
                                                     <!-- TABEL 2 -->
 
@@ -126,6 +127,7 @@
                     ?>
                 </tbody>
         </table>
+        <div class="pagination"> {!! $assignments1->render() !!} </div>
     </div>
     
 @endsection

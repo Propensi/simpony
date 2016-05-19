@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+@include('layouts.flash')
 
     <h1>Departments <a href="{{ url('departments/create') }}" class="btn btn-primary pull-right btn-sm">Add New Department</a></h1>
     <div class="table">
