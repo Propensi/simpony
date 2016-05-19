@@ -88,7 +88,8 @@
 <!-- tutup box -->
 
     </div>
-    
+@if(!is_null($summary))    
 @include('summary.modalrpm')
+@endif
 
 @endsection
