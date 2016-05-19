@@ -112,7 +112,7 @@ $(document).ready(function() {
 
                         <div class="col-md-4">
                             <h4> Files </h4>
-                            <a href=""><i class="fa fa-picture-o"></i> {{$assignment->Assn_File}}</a>
+                            <a href={{ url("../resources/uploads" ,$assignment->Assn_File) }} <?php if(!is_null($assignment->Assn_File)) echo "download"; ?> ></i> {{$assignment->Assn_File}}</a>
                         </div>
                     </div>
                                     
@@ -200,7 +200,7 @@ $(document).ready(function() {
                         @foreach($files as $item)
 
                         <?php
-                        echo '<a class="test-popup-link" href="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'"><img src="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'" alt="..." height="150"  class="test-popup-link" ></a>';
+                        echo '<a class="test-popup-link" href="http://localhost/simpony/resources/uploads/'.$item->File.'"><img src="http://localhost/simpony/resources/uploads/'.$item->File.'" alt="..." height="150"  class="test-popup-link" ></a>';
                         ?>
 
                         @endforeach
@@ -214,6 +214,66 @@ $(document).ready(function() {
         </div>
         </div>
 
+<div class="col-md-4">
+            <div class="box comments" style="height:300px;">
+                <div class="box-body">
+            <h5>
+                Comments
+            </h5>
+            <hr>
+            <br>
+
+            <div class="box-comment">
+                <!-- User image -->
+                <!-- <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
+ -->
+                <div class="comment-text">
+                 
+
+@foreach($comments as $item)
+
+                <div class="box-comment">
+                
+                <div class="comment-text">
+                      <span class="username">
+                        <strong>{{ $item->name }}</strong>
+                        <span class="text-muted pull-right">{{ $item->created_at }} </span>
+                      </span>
+                <p>
+                      {{$item->Comment}}
+                   <p>
+                </div>
+                
+              </div>
+              <hr>
+            <br>
+
+@endforeach
+
+
+            <!-- disini end foreach -->
+            {!! Form::open(['url' => 'comments', 'class' => 'form-horizontal']) !!}
+                <div class="form-group col-sm-12">
+
+                  {!! Form::label('Comment', '', ['class' => 'form-control']) !!}
+
+                     {!! Form::textarea('Comment', null, ['class' => 'form-control', 'required'=> 'required']) !!}
+                    
+                    <!-- <input id="Comments" placeholder="Tinggalkan pesan" type="text" class="form-control" id="comment" /> -->
+               
+               {!! Form::hidden('klien', 1) !!}     
+               {!! Form::hidden('Assn_ID', $assignment->Assn_ID) !!}
+               {!! Form::hidden('Sender', Auth::user()->user_ID ) !!}
+            <br>
+            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+
+
+        </div> 
+        {!! Form::close() !!}
+        </div>
+    </div>
+</div>
+</div>
       
 <!-- div tutup body-->
 

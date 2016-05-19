@@ -4,52 +4,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.js"></script>
 
 <div class="row">
-        <div class="col-lg-4 col-xs-4">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>{{ $total }}</h3>
-
-              <p>Pekerjaan Divisi</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-4">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>{{ $promosi }}</h3>
-
-              <p>Promotions</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            
-          </div>
-        </div>
-
         
         <!-- ./col -->
-        <div class="col-lg-4 col-xs-4">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>{{$research}}</h3>
-
-              <p>Research & Dev.</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            
-          </div>
-        </div>
+        
         <!-- ./col -->
       </div>
 
@@ -142,6 +99,26 @@
           </div>      
         </div>
         </div>
+
+        <div class="col-md-6">
+      <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pekerjaan Saat Ini</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body chart-responsive">
+              <canvas id="piechart" ></canvas>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+          </div>
+
         </div>
 
        <script>
@@ -242,6 +219,47 @@ var myChart = new Chart(ctx, {
             }]
         }
     }
+});
+
+Chart.defaults.global.responsive = true;
+</script>
+
+<script>
+
+var done = [];
+          var going = [];
+
+
+              done.push('{{$assndone}}');
+              going.push('{{$assn}}');
+                        
+
+var ctx = document.getElementById("piechart");
+
+
+var data = {
+    labels: [
+        "Pekerjaan Selesai",
+        "Pekerjaan Saat ini",
+    ],
+    datasets: [
+        {
+            data: [done, going],
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB"
+
+            ],
+            hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB"
+            ]
+        }]
+};
+
+var piechart = new Chart(ctx, {
+    type: 'pie',
+    data: data
 });
 
 Chart.defaults.global.responsive = true;

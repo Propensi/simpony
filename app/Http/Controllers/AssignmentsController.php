@@ -122,7 +122,7 @@ class AssignmentsController extends Controller
            $assignments = Assignment::create(array('Assn_Nama' => $request->Assn_Nama, 'Dept_ID' => $request->Dept_ID, 'Emp_ID_Req_Vald' => $request->Emp_ID_Req_Vald, 'Assn_Deskripsi' => $request->Assn_Deskripsi, 
                 'Assn_File' => $fileName, 'Tgl_Deadline'=> $request->Tgl_Deadline, 'HOD_ID'=> $request->HOD_ID));
 
-            Session::flash('flash_message', 'Assignment added!');
+            Session::flash('flash_message', 'Pekerjaan berhasil dibuat!');
 
             return redirect('assignments/pelacakan');
 
@@ -188,7 +188,15 @@ class AssignmentsController extends Controller
         $assignment = Assignment::findOrFail($id);
         $assignment->update($request->all());
 
-        Session::flash('flash_message', 'Assignment updated!');
+
+        if($request->Assn_Status == '1') {
+        Session::flash('flash_message', 'Pekerjaan berhasil disetujui!');
+        } elseif ($request->Assn_Status == '2') {
+        Session::flash('flash_message', 'Pekerjaan berhasil ditolak!');
+        } else {
+            Session::flash('flash_message', 'Pekerjaan berhasil diperbaharui!');
+        }
+
 
        return Redirect::back();
     }
@@ -200,7 +208,7 @@ class AssignmentsController extends Controller
         $assignment = Assignment::findOrFail($id);
         $assignment->update($request->all());
 
-        Session::flash('flash_message', 'Assignment updated!');
+        Session::flash('flash_message', 'Pekerjaan berhasil diassign!');
 
         return redirect('assignments/pekerjaanDept');
     }
@@ -237,10 +245,17 @@ class AssignmentsController extends Controller
     public function assignStaff($id)
     {   
         $steps = Step::where('Assn_ID','=',$id)->paginate(15);
+        
+        if(!is_null(Step::where('Assn_ID','=',$id)->where('bobot','=',100)->first())) {
+            $var = 1;    
+        } else {
+            $var = 0;
+        }
+
         $eser = \DB::table('users')->where('role','=','Staff')->lists('name', 'user_ID');
         $assignment = Assignment::findOrFail($id);
         $min = \DB::table('steps')->where('Assn_ID','=',$id)->max('bobot') + 1;
-        return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps)->with('min',$min);
+        return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps)->with('min',$min)->with('var',$var);
     }
 
     public function listAccepted()
@@ -309,9 +324,9 @@ class AssignmentsController extends Controller
         //$comments = Comment::all();
         //$commentsu = Comment::with('users')->get();
 
-        $comments = \DB::table('comments')->where('Assn_ID','=',$id)
+        $comments = \DB::table('comments')->where('Assn_ID','=',$id)->where('klien','=',1)
         ->join('users', function ($join) {
-            $join->on('comments.Sender', '=', 'users.User_ID');
+            $join->on('comments.Sender', '=', 'users.User_ID')->where('users.role','!=','Head of Dept')->where('users.role','!=','Head Group')->where('users.role','!=','General Manager');
         })
         ->get();
 
@@ -327,7 +342,7 @@ class AssignmentsController extends Controller
     {
         $assignments0 = \DB::table('assignments')->where('Assn_Status', '=', 1 )->where('HG_ID', '!=', 'null' )
         ->join('steps', function ($join) { $join->on('assignments.Milestone', '=', 'steps.ID_Step');})
-        ->get();
+        ->paginate(15);
 
 
         //$assignments = Assignment::paginate(15);

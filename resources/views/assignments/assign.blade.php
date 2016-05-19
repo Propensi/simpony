@@ -1,8 +1,8 @@
 @extends('layouts.admin_template')
 
 @section('content')
-<!-- jgjffh -->
-<!-- hahahaha -->
+@include('layouts.flash')
+
     <h1>Assign Pekerjaan</h1>
     <hr>
 
@@ -28,10 +28,10 @@
                     <td> {{ $assignment->Assn_Nama }} </td>
                     <td> {{ $assignment->Assn_Deskripsi}} </td>
                     <td> {{ $assignment->Assn_File }}</td>
-                    <td> {{ $assignment->Emp_ID_Req_Vald }}</td>
-                    <td> {{ $assignment->Dept_ID }}</td>
+                    <td> {{ $assignment->sender->name }}</td>
+                    <td> {{ $assignment->dept->Dept_Name }}</td>
                     <!--<td> {{ $assignment->Staff_Prog_ID_Do }}</td>-->
-                    <td> {{ $assignment->Tgl_Request }}</td>
+                    <td> {{ $assignment->created_at }}</td>
                     <td> {{ $assignment->Tgl_Deadline }} </td>
 
                     <td>
@@ -48,7 +48,7 @@
     {!! Form::model($assignment, [
         'method' => 'PATCH',
         'url' => ['assignments/update2', $assignment->Assn_ID],
-        'class' => 'form-horizontal'
+        'class' => 'form-horizontal update'
     ]) !!}
 
             
@@ -79,4 +79,10 @@
             @endforeach
         </ul>
     @endif
+
+    <script>
+    $(".update").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Mengassign Pekerjaan Ini?");
+    });
+</script>
 @endsection
