@@ -44,7 +44,7 @@
             <div class="form-group {{ $errors->has('role') ? 'has-error' : ''}}">
                 {!! Form::label('role', 'Role: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('role', (['' => 'Select a Role'] + array('Head of Dept' => 'Head of Dept','Head Group' => 'Head Group','Staff'=> 'Staff')), null,['class' => 'form-control' , 'required'=> 'required']); !!}
+                    {!! Form::select('role', (['' => 'Select a Role'] + array('Head of Dept' => 'Head of Dept','Head Group' => 'Head Group','Staff'=> 'Staff','General Manager'=> 'General Manager','Admin' => 'Admin')), null,['class' => 'form-control' , 'required'=> 'required']); !!}
 
                     {!! $errors->first('role', '<p class="help-block">:message</p>') !!}
                 </div>
