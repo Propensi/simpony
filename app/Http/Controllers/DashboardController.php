@@ -40,9 +40,19 @@ class DashboardController extends Controller
     {
         $current = date("Y/m/d");
         $jadwaltayangs = Jadwaltayang::where("Tanggal",'=',$current)->orderBy('Time','asc')->paginate(15);
-        $promosi = Assignment::where('Hg_Val','!=',1)->where('Hod_Val','!=',1)->count(); 
-        
-        return view('dashboard.hg', compact('stats','jadwaltayangs','promosi'));
+        $promosi = Assignment::where('Hg_Val','!=',1)->where('Hod_Val','!=',1)->count();    
+        $research = Assignment2::where('Status','=','Proses')->count();
+
+        $assndone = Assignment::where('Hg_Val','=', 1)->where('Hod_Val','=', 1)->count();
+        $assn = Assignment::where('Hg_Val','=', 0)->where('Hod_Val','=', 0)->count();
+
+        $total = $promosi + $research;
+
+        $rating = Summary::where("Prog_ID",'=',1)->get();
+
+            $work = DB::select(DB::raw( "SELECT count(*) as jumlah, Tgl_Deadline FROM `assignments` group BY Tgl_Deadline "));
+
+        return view('dashboard.hg', compact('stats','jadwaltayangs','promosi','research','total','rating','work','assndone','assn'));
     }
 
      public function hod()
@@ -50,8 +60,18 @@ class DashboardController extends Controller
         $current = date("Y/m/d");
         $jadwaltayangs = Jadwaltayang::where("Tanggal",'=',$current)->orderBy('Time','asc')->paginate(15);
         $promosi = Assignment::where('Hg_Val','!=',1)->where('Hod_Val','!=',1)->count();    
-        
-        return view('dashboard.gm', compact('stats','jadwaltayangs','promosi'));
+        $research = Assignment2::where('Status','=','Proses')->count();
+
+        $assndone = Assignment::where('Hg_Val','=', 1)->where('Hod_Val','=', 1)->count();
+        $assn = Assignment::where('Hg_Val','=', 0)->where('Hod_Val','=', 0)->count();
+
+        $total = $promosi + $research;
+
+        $rating = Summary::where("Prog_ID",'=',1)->get();
+
+            $work = DB::select(DB::raw( "SELECT count(*) as jumlah, Tgl_Deadline FROM `assignments` group BY Tgl_Deadline "));
+
+        return view('dashboard.hg', compact('stats','jadwaltayangs','promosi','research','total','rating','work','assndone','assn'));
     }
 
 

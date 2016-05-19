@@ -112,7 +112,7 @@ $(document).ready(function() {
 
                         <div class="col-md-4">
                             <h4> Files </h4>
-                            <a href=""><i class="fa fa-picture-o"></i> {{$assignment->Assn_File}}</a>
+                            <a href={{ url("../resources/uploads" ,$assignment->Assn_File) }} <?php if(!is_null($assignment->Assn_File)) echo "download"; ?> ></i> {{$assignment->Assn_File}}</a>
                         </div>
                     </div>
                                     
@@ -200,7 +200,7 @@ $(document).ready(function() {
                         @foreach($files as $item)
 
                         <?php
-                        echo '<a class="test-popup-link" href="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'"><img src="http://localhost/TestRepo3/simpony2/resources/uploads/'.$item->File.'" alt="..." height="150"  class="test-popup-link" ></a>';
+                        echo '<a class="test-popup-link" href="http://localhost/simpony/resources/uploads/'.$item->File.'"><img src="http://localhost/simpony/resources/uploads/'.$item->File.'" alt="..." height="150"  class="test-popup-link" ></a>';
                         ?>
 
                         @endforeach
