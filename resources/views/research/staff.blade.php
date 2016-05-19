@@ -6,10 +6,10 @@
     <div class="row">
     <div class="col-md-12">
     <div class="invoice" style="margin: 0px 0px;">
-          <h3>{{ $summary->programs->Prog_Nama }} : {{ $summary->Tanggal_Sum}}</h3>
+            <h3>{{ $assignments2->program->Prog_Nama }} : {{ $assignments2->Tanggal}}</h3>
             <hr>
         
-            <h4>Deskripsi : {{ $summary->programs->Prog_Deskripsi }}</h4>
+            <h4>Deskripsi : {{ $assignments2->program->Prog_Deskripsi }}</h4>
             <h4>Rata-rata Rating : {{ $rating }}</h4>
     </div>
     </div>
@@ -55,6 +55,8 @@
                             'style' => 'display:inline'
                         ]) !!}
 
+                        {!! Form::hidden('Assn_ID',$assignments2->Assn_ID) !!}
+
                         {!! Form::submit('Update', ['class' => 'btn btn-primary btn-xs']) !!}
 
                         {!! Form::close() !!}
@@ -62,7 +64,7 @@
 
                         {!! Form::open([
                             'method'=>'DELETE',
-                            'url' => ['/rpm', $item->Rpm_ID],
+                            'url' => ['/rpmsum', $item->Rpm_ID],
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
