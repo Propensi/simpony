@@ -20,7 +20,7 @@ class Comment extends Model
      *
      * @var array
      */
-    protected $fillable = ['Comment', 'Assn_ID', 'Step_ID', 'Sender', 'Receiver'];
+    protected $fillable = ['Comment', 'Assn_ID', 'Step_ID', 'Sender', 'Receiver','klien'];
 
 
 

@@ -1,9 +1,9 @@
 @extends('layouts.admin_template')
 
 @section('content')
-<!-- jgjffh -->
-<!-- hahahaha -->
-    <h1>Assign Assignment</h1>
+@include('layouts.flash')
+
+    <h1>Assign Pekerjaan</h1>
     <hr>
 
     <div class="table-responsive">
@@ -14,13 +14,12 @@
                     <th>Judul</th>
                     <th>Deskripsi</th>
                     <th>File</th>
-                    <th>Sender</th>
+                    <th>Pengirim</th>
                     <th>Departemen</th>
                     <!--<th>Head Group</th>-->
-                    <th>Created at</th>
-                    <th>Deadline</th>
-                    <th>Milestone</th>
-                    <th>Status</th>            
+                    <th>Tgl. Dibuat</th>
+                    <th>Tgl. Deadline</th>
+                    <th>Status Pekerjaan</th>            
                 </tr>
             </thead>
             <tbody>
@@ -29,16 +28,16 @@
                     <td> {{ $assignment->Assn_Nama }} </td>
                     <td> {{ $assignment->Assn_Deskripsi}} </td>
                     <td> {{ $assignment->Assn_File }}</td>
-                    <td> {{ $assignment->Emp_ID_Req_Vald }}</td>
-                    <td> {{ $assignment->Dept_ID }}</td>
+                    <td> {{ $assignment->sender->name }}</td>
+                    <td> {{ $assignment->dept->Dept_Name }}</td>
                     <!--<td> {{ $assignment->Staff_Prog_ID_Do }}</td>-->
-                    <td> {{ $assignment->Tgl_Request }}</td>
+                    <td> {{ $assignment->created_at }}</td>
                     <td> {{ $assignment->Tgl_Deadline }} </td>
-                    <td> {{ $assignment->Milestone }}</td>
+
                     <td>
                     <?php  
                         if (($assignment -> Assn_Status) == '1'){
-                            echo 'Approved';
+                            echo 'Disetujui';
                         }
                     ?>
                 </tr>
@@ -49,7 +48,7 @@
     {!! Form::model($assignment, [
         'method' => 'PATCH',
         'url' => ['assignments/update2', $assignment->Assn_ID],
-        'class' => 'form-horizontal'
+        'class' => 'form-horizontal update'
     ]) !!}
 
             
@@ -57,7 +56,7 @@
             <div class="form-group {{ $errors->has('HG_ID') ? 'has-error' : ''}}">
                 {!! Form::label('HG_ID', 'Pilih Head Group: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('HG_ID', (['' => 'Select a Head Group'] + $aser), null, ['class' => 'form-control' , 'required'=> 'required'] ) !!}
+                    {!! Form::select('HG_ID', (['' => 'Pilih'] + $aser), null, ['class' => 'form-control' , 'required'=> 'required'] ) !!}
                     {!! $errors->first('HG_ID', '<p class="help-block">:message</p>') !!}
 
                 </div>
@@ -80,4 +79,10 @@
             @endforeach
         </ul>
     @endif
+
+    <script>
+    $(".update").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Mengassign Pekerjaan Ini?");
+    });
+</script>
 @endsection

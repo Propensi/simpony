@@ -1,17 +1,17 @@
 @extends('layouts.admin_template')
 
 @section('content')
+@include('layouts.flash')
 
-    <h1>Assigments <a href="{{ url('assignments/create') }}" class="btn btn-primary pull-right btn-sm">Add New Assignment</a></h1>
+    <h1>Daftar Pekerjaan <a href="{{ url('assignments/create') }}" class="btn btn-primary pull-right btn-sm">Tambah Pekerjaan Baru</a></h1>
     <div class="table">
 
                                                             <!-- TABEL 1 -->
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <h4> Request Masuk </h4>
-
                 <tr>
-                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Deadline</th><th>Created</th><th> Action </th>
+                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Tgl. Deadline</th><th>Tgl. Dibuat</th><th> Tindakan </th>
                 </tr>
             </thead>
             <tbody>
@@ -45,9 +45,10 @@
                       {!! Form::open([
                             'method'=>'PATCH',
                             'url' => ['assignments', $item->Assn_ID],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+                            'class' => 'form-horizontal update'
                         ]) !!}
-                            {!! Form::submit('Approve', ['class' => 'btn btn-primary btn-xs'] ) !!}
+                            {!! Form::submit('Setujui', ['class' => 'btn btn-primary btn-xs'] ) !!}
                             {!! Form::hidden('Assn_Status','1') !!}
                         {!! Form::close() !!}
 
@@ -57,9 +58,10 @@
                     {!! Form::open([
                             'method'=>'PATCH',
                             'url' => ['assignments', $item->Assn_ID],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+                            'class' => 'form-horizontal delete'
                         ]) !!}
-                            {!! Form::submit('Reject', ['class' => 'btn btn-danger btn-xs'] ) !!}
+                            {!! Form::submit('Tolak', ['class' => 'btn btn-danger btn-xs'] ) !!}
                             {!! Form::hidden('Assn_Status','2') !!}
                         {!! Form::close() !!}
                         </td> 
@@ -74,7 +76,7 @@
                     ?>
                 </tbody>
         </table>
-
+        <div class="pagination"> {!! $assignments0->render() !!} </div>
                                                     <!-- TABEL 2 -->
 
             <!--request diterima-->
@@ -83,7 +85,7 @@
                 <thead>
                     <h4> Request Diterima </h4>
                     <tr>
-                         <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Deadline</th><th>Created</th>
+                         <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Tgl. Deadline</th><th>Tgl. Dibuat</th><th>Tindakan</th>
                      </tr>
                 </thead>
                 <tbody>
@@ -116,5 +118,15 @@
     <div class="pagination"> {!! $assignments1->render() !!}</div>
     
     </div>
+
+    <script>
+    $(".update").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Menyetujui Pekerjaan Ini?");
+    });
+
+        $(".delete").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Menolak Pekerjaan Ini?");
+    });
+</script>
     
 @endsection

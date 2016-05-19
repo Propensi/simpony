@@ -28,4 +28,10 @@ class Program extends Model
     {
         return $this->hasMany('App\Summary','Prog_ID','Prog_ID');
     }
+
+    public function program()
+    {
+        return $this->hasMany('App\Assignment2','Prog_ID','Prog_ID');
+    }
+
 }

@@ -9,6 +9,7 @@ use App\Jadwaltayang;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use Illuminate\Support\Facades\Redirect;
 
 class JadwaltayangsController extends Controller
 {
@@ -67,6 +68,24 @@ class JadwaltayangsController extends Controller
         return redirect('jadwaltayangs');
     }
 
+
+    public function jadwaltayangs2(Request $data)
+    {
+
+        $program = Program::where('Prog_ID', '=', $data['Prog_ID'])->first();
+        // Jadwaltayang::create($request->all());        
+        Jadwaltayang::create([
+            // 'Jadwal_ID' => $data['Jadwal_ID'],
+            'Prog_ID' => $data['Prog_ID'],
+            'Nama_Program' => $program->Prog_Nama,
+            'Tanggal' => $data['Tanggal'],
+            'Time' => $data['Time']
+        ]);
+
+        Session::flash('flash_message', 'Jadwaltayang added!');
+
+        return Redirect::back();
+    }
     /**
      * Display the specified resource.
      *
@@ -108,9 +127,12 @@ class JadwaltayangsController extends Controller
         $jadwaltayang = Jadwaltayang::findOrFail($id);
         $jadwaltayang->update($request->all());
 
-        Session::flash('flash_message', 'Jadwaltayang updated!');
+        $program = Program::findOrFail($request['Prog_ID']);
 
-        return redirect('jadwaltayangs');
+        $jadwaltayangs = Jadwaltayang::where('Prog_ID','=',$request['Prog_ID'])->paginate(15);
+
+        return view('plansched/.show', compact('program','jadwaltayangs'));
+
     }
 
     /**
@@ -126,6 +148,6 @@ class JadwaltayangsController extends Controller
 
         Session::flash('flash_message', 'Jadwaltayang deleted!');
 
-        return redirect('jadwaltayangs');
+        return Redirect::back();
     }
 }
