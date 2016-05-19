@@ -9,7 +9,7 @@
                 {!! Form::label('Prog_ID', 'Nama Program :', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
 
-                    {!! Form::select('Prog_ID', $programs, null, ['class' => 'form-control', 'required'=> 'required']) !!}
+                    {!! Form::select('Prog_ID', (['' => 'Pilih Program'] + $programs), null , ['class' => 'form-control', 'required'=> 'required']) !!}
 
                     {!! $errors->first('Prog_ID', '<p class="help-block">:message</p>') !!}
                 </div>
