@@ -247,15 +247,15 @@ class AssignmentsController extends Controller
         $steps = Step::where('Assn_ID','=',$id)->paginate(15);
         
         if(!is_null(Step::where('Assn_ID','=',$id)->where('bobot','=',100)->first())) {
-            $true = 1;    
+            $var = 1;    
         } else {
-            $true = 0;
+            $var = 0;
         }
 
         $eser = \DB::table('users')->where('role','=','Staff')->lists('name', 'user_ID');
         $assignment = Assignment::findOrFail($id);
         $min = \DB::table('steps')->where('Assn_ID','=',$id)->max('bobot') + 1;
-        return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps)->with('min',$min);
+        return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps)->with('min',$min)->with('var',$var);
     }
 
     public function listAccepted()
@@ -325,9 +325,11 @@ class AssignmentsController extends Controller
         //$commentsu = Comment::with('users')->get();
 
         $comments = \DB::table('comments')->where('Assn_ID','=',$id)->where('klien','=',1)
-        ->join('users', function ($join) {
-            $join->on('comments.Sender', '=', 'users.User_ID')->where('users.role','!=','Head of Dept')->where('users.role','!=','Head Group')->where('users.role','!=','General Manager');
-        })
+        ->join('users', function ($join) use ($assignment) {
+            $join->on('comments.Sender', '=', 'users.User_ID');
+        })->where('role','!=','Head of Dept')->where('role','!=','Head Group')->where('role','!=','General Manager')->orWhere(function ($query) use ($assignment) {
+                $query->where('Sender', '=', $assignment->Emp_ID_Req_Vald);
+                })
         ->get();
 
         $files = Files::where('Assn_ID','=',$id)->get();

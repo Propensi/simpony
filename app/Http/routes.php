@@ -1,12 +1,8 @@
 <?php
 
 Route::auth();
-	
-Route::get('/', function () {
-    	// return view('blank');
-	return redirect('/home');
-});
 
+Route::get('/','DashboardController@role');
 
 Route::get('assignments/pinjamriset','AssignmentsController@pinjamriset');
 Route::get('plansched/programs','ProgramsController@indexps');
@@ -29,7 +25,7 @@ Route::patch('rpm/update2/{Rpm_ID}', 'RpmController@update2');
 
 // harus login
 Route::group(['middleware' => 'user'], function () {
-
+	Route::get('/','DashboardController@role');
 	Route::get('/home', function () {
     	return view('blank');
 	});
