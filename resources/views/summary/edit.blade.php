@@ -26,13 +26,6 @@
                     {!! $errors->first('Prog_ID', '<p class="help-block">:message</p>') !!}
                 </div>
             </div> -->
-            <div class="form-group {{ $errors->has('Prog_Nama') ? 'has-error' : ''}}">
-                {!! Form::label('Prog_Nama', 'Nama Program: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('Prog_Nama', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('Prog_Nama', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
             <div class="form-group {{ $errors->has('Average_Rating') ? 'has-error' : ''}}">
                 {!! Form::label('Average_Rating', 'Average Rating: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -43,7 +36,7 @@
             <div class="form-group {{ $errors->has('Tanggal_Sum') ? 'has-error' : ''}}">
                 {!! Form::label('Tanggal_Sum', 'Tanggal Summary: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::input('datetime-local', 'Tanggal_Sum', null, ['class' => 'form-control']) !!}
+                    {!! Form::input('date', 'Tanggal_Sum', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('Tanggal_Sum', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

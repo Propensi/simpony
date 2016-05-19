@@ -1,8 +1,8 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
-    <h1>Assigments <a href="{{ url('assignments/create') }}" class="btn btn-primary pull-right btn-sm">Add New Assignment</a></h1>
+@include('layouts.flash')
+    <h1>Pekerjaan <a href="{{ url('assignments/create') }}" class="btn btn-primary pull-right btn-sm">Tambah Pekerjaan Baru</a></h1>
     <div class="table">
 
                                                             <!-- TABEL 1 -->
@@ -11,7 +11,7 @@
                 <h4> Pekerjaan Departemen </h4>
 
                 <tr>
-                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Deadline</th><th>Created</th><th> Action </th>
+                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Tgl. Deadline</th><th>Tgl. Dibuat</th><th> Tindakan </th>
                 </tr>
             </thead>
             <tbody>
@@ -64,16 +64,17 @@
                     ?>
                 </tbody>
         </table>
+        <div class="pagination"> {!! $assignments0->render() !!} </div>
 
                                                     <!-- TABEL 2 -->
 
 
  <table class="table table-bordered table-striped table-hover">
             <thead>
-                <h4> Pekerjaan Departemen (idle) </h4>
+                <h4> Pekerjaan Departemen (Menunggu) </h4>
 
                 <tr>
-                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Deadline</th><th>Created</th><th> Action </th>
+                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Tgl. Deadline</th><th>Tgl. DIbuat</th><th>Tindakan</th>
                 </tr>
             </thead>
             <tbody>
@@ -126,6 +127,7 @@
                     ?>
                 </tbody>
         </table>
+        <div class="pagination"> {!! $assignments1->render() !!} </div>
     </div>
     
 @endsection

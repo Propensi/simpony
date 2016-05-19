@@ -7,7 +7,7 @@
 
     {!! Form::model($rpm, [
         'method' => 'PATCH',
-        'url' => ['/rpm', $rpm->Rpm_ID],
+        'url' => ['/rpm/update2', $rpm->Rpm_ID],
         'class' => 'form-horizontal'
     ]) !!}
 
@@ -33,7 +33,8 @@
                 </div>
             </div>
 
-
+             {!! Form::hidden('Assn_ID',$Assn_ID) !!}
+            
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}

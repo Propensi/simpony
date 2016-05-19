@@ -26,4 +26,15 @@ class Assignment extends Model
         return $this->belongsToMany('App\Assignment');
         
     }
+
+    public function dept()
+    {
+        return $this->belongsTo('App\Department','Dept_ID','Dept_ID');
+    }
+
+    public function sender()
+    {
+        return $this->belongsTo('App\User','Emp_ID_Req_Vald','user_ID');
+    }
+
 }

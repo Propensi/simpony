@@ -27,4 +27,9 @@ class Artist extends Model
     {
         return $this->hasMany('App\Rpm','Artis_ID','Artis_ID');
     }
+
+    public function program()
+    {
+        return $this->hasMany('App\Artprog','Artis_ID','Artis_ID');
+    }
 }

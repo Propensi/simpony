@@ -9,6 +9,8 @@ use App\Rpm;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use App\Summary;
+use App\Assignment2;
 
 class RpmController extends Controller
 {
@@ -86,14 +88,20 @@ class RpmController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['RPM_ID' => 'required', 'Artis_ID' => 'required', 'Rating' => 'required', 'Deskripsi' => 'required', ]);
-
         $rpm = Rpm::findOrFail($id);
         $rpm->update($request->all());
 
         Session::flash('flash_message', 'Rpm updated!');
 
-        return redirect('rpm');
+        $idr = $rpm->Sum_ID;
+        $summary = Summary::findOrFail($rpm->Sum_ID);
+
+        $rpm = Rpm::where('Sum_ID','=',$idr)->paginate(15);
+        $artis = \DB::table('artists')->lists('Nama_Artis', 'Artis_ID');
+        $rating = \DB::table('ratingpermenit')->where('Sum_ID','=',$idr)->avg('Rating');
+
+        return view('summary.ratingpermenit', compact('summary','rpm','artis','rating'));
+
     }
 
     /**
@@ -120,4 +128,32 @@ class RpmController extends Controller
 
         return Redirect::back();
     }
+
+    public function edit2($id, Request $request)
+    {
+        $rpm = Rpm::findOrFail($id);
+        $Assn_ID = $request->Assn_ID;
+
+        return view('rpm.edit2', compact('rpm','Assn_ID'));
+    }
+
+
+    public function update2($id, Request $request)
+    {
+        $rpm = Rpm::findOrFail($id);
+        $rpm->update($request->all());
+
+        $assignments2 = Assignment2::findOrFail($request->Assn_ID);
+        $summary = Summary::where('Sum_ID','=', $assignments2->Sum_ID)->first();
+        $rpm = Rpm::where('Sum_ID','=',$assignments2->Sum_ID)->get();
+
+        $artis = \DB::table('artisprograms')->join('artists', function ($join) {
+            $join->on('artisprograms.Artis_ID', '=', 'artists.Artis_ID');
+        })->lists('Nama_Artis', 'artisprograms.Artis_ID');
+
+        $rating = \DB::table('ratingpermenit')->where('Sum_ID','=',$assignments2->Sum_ID)->avg('Rating');
+
+        return view('research.staff', compact('summary','rpm','artis','rating','assignments2'));
+    }
+
 }

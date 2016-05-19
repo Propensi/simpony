@@ -1,17 +1,17 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
+    @include('layouts.flash')
     <!-- Halaman ini digunakan untuk melihat assignment yang diajukan ke orang lain -->
     <div class="table">
 
                                                             <!-- TABEL 1 -->
         <table class="table table-bordered table-striped table-hover">
             <thead>
-                <h4> Melacak Assignment Anda </h4>
+                <h4> Melacak Pekerjaan Anda </h4>
 
                 <tr>
-                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Deadline</th><th>Created</th>
+                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Tgl. Deadline</th><th>Tgl. Dibuat</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,7 +50,7 @@
               <?php 
                     if($x == '0'){
                         echo 
-                        '<td>Tidak ada Assignment.</td><td></td><td></td><td></td><td></td><td></td>
+                        '<td>Tidak ada Pekerjaan.</td><td></td><td></td><td></td><td></td><td></td>
                         ';
                     }
                     ?>
@@ -63,10 +63,10 @@
                                                     <!-- TABEL 1 -->
         <table class="table table-bordered table-striped table-hover">
             <thead>
-                <h4> Assignment (menunggu)  </h4>
+                <h4> Pekerjaan (menunggu)  </h4>
 
                 <tr>
-                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Deadline</th><th>Created</th>
+                    <th>No.</th><th>Judul</th><th>Deskripsi</th><th>Progress</th><th>Tgl. Deadline</th><th>Tgl. Dibuat</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,11 +100,12 @@
               <?php 
                     if($x == '0'){
                         echo 
-                        '<td>Tidak ada Assignment.</td><td></td><td></td><td></td><td></td><td></td>
+                        '<td>Tidak ada Pekerjaan.</td><td></td><td></td><td></td><td></td><td></td>
                         ';
                     }
                     ?>
                 </tbody>
         </table>
+
     
 @endsection

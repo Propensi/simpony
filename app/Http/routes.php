@@ -7,6 +7,26 @@ Route::get('/', function () {
 	return redirect('/home');
 });
 
+
+Route::get('assignments/pinjamriset','AssignmentsController@pinjamriset');
+Route::get('plansched/programs','ProgramsController@indexps');
+Route::get('plansched/programs/{Prog_ID}','ProgramsController@showps');
+Route::post('jadwaltayangs2', 'JadwaltayangsController@jadwaltayangs2');
+Route::patch('assignments2/update/{Assn_ID}','Assignments2Controller@update');
+Route::get('assignments2/membuatriset','Assignments2Controller@membuatriset');
+Route::post('assignments2','Assignments2Controller@store');
+
+Route::get('assignments2/pelacakan','Assignments2Controller@pelacakan');
+Route::get('assignments2/index','Assignments2Controller@index');
+Route::get('assignments2/indexditolak','Assignments2Controller@indexditolak');
+
+Route::get('assignments2/{Assn_ID}/staff','Assignments2Controller@staff');
+Route::get('assignments2/{Assn_ID}/klien','Assignments2Controller@klien');
+
+Route::patch('rpm/edits2/{Rpm_ID}', 'RpmController@edit2');
+Route::patch('rpm/update2/{Rpm_ID}', 'RpmController@update2');
+
+
 // harus login
 Route::group(['middleware' => 'user'], function () {
 
@@ -34,6 +54,7 @@ Route::group(['middleware' => 'Staff'], function () {
 
 // minimal HG
 Route::group(['middleware' => 'HG'], function () {
+	Route::get('hg', 'DashboardController@hg');
 	Route::get('assignments/hgstaff', 'AssignmentsController@hgstaff');
 	Route::get('assignments/{Assn_ID}/managerview', 'AssignmentsController@managerview');
 	Route::get('assignments/{Assn_ID}/assignStaff', 'AssignmentsController@assignStaff');
