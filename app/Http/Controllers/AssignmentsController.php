@@ -247,15 +247,15 @@ class AssignmentsController extends Controller
         $steps = Step::where('Assn_ID','=',$id)->paginate(15);
         
         if(!is_null(Step::where('Assn_ID','=',$id)->where('bobot','=',100)->first())) {
-            $true = 1;    
+            $var = 1;    
         } else {
-            $true = 0;
+            $var = 0;
         }
 
         $eser = \DB::table('users')->where('role','=','Staff')->lists('name', 'user_ID');
         $assignment = Assignment::findOrFail($id);
         $min = \DB::table('steps')->where('Assn_ID','=',$id)->max('bobot') + 1;
-        return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps)->with('min',$min);
+        return view('assignments.assignStaff')->with('assignment', $assignment)->with('eser',$eser)->with('steps',$steps)->with('min',$min)->with('var',$var);
     }
 
     public function listAccepted()

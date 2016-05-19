@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
+    
     <h1>Assign Pekerjaan</h1>
     <hr>
 
@@ -44,41 +44,6 @@
     </div>
 
 
-
-    {!! Form::model($assignment, [
-        'method' => 'PATCH',
-        'url' => ['assignments', $assignment->Assn_ID],
-        'class' => 'form-horizontal update' 
-    ]) !!}
-
-
-
-            <div class="form-group {{ $errors->has('mgr_id') ? 'has-error' : ''}}">
-                {!! Form::label('Staff_Prog_ID_Do', 'Pilih Staff: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::select('Staff_Prog_ID_Do', (['' => 'Select a Staff'] + $eser), null, ['class' => 'form-control' , 'required'=> 'required']) !!}
-                    {!! $errors->first('Staff_Prog_ID_Do', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-
-    <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Assign Staff', ['class' => 'btn btn-primary form-control']) !!}
-            
-        </div>
-    </div>
-    {!! Form::close() !!}
-
-    @if ($errors->any())
-        <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-
-
-
     <hr>
 
       <!-- Modal -->
@@ -100,20 +65,20 @@
             <div class="form-group {{ $errors->has('Title') ? 'has-error' : ''}}">
                 {!! Form::label('Title', 'Nama Milestone: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('Title', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('Title', null, ['class' => 'form-control', 'required'=> 'required']) !!}
                     {!! $errors->first('Title', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('Step') ? 'has-error' : ''}}">
                 {!! Form::label('Step', 'Deskripsi: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('Step', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('Step', null, ['class' => 'form-control', 'required'=> 'required']) !!}
                     {!! $errors->first('Step', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 
                 <div class="form-group {{ $errors->has('Step') ? 'has-error' : ''}}">
-                {!! Form::label('bobot', 'Bobot: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('bobot', 'Bobot: ', ['class' => 'col-sm-3 control-label', 'required'=> 'required']) !!}
                 <div class="col-sm-6">
                     
                     <input type="number" class ="form-control" name="bobot" min={{$min}} max="100"> 
@@ -148,7 +113,9 @@
       </div>
     </div>
   </div>
-    <h1>Milestone <button type="button" class="btn btn-info btn-md pull-right" data-toggle="modal" data-target="#myModal">Membuat Milestone Baru</button></h1>
+    <h1>Milestone <?php if($var == 0) 
+            { echo "<button type='button' class='btn btn-info btn-md pull-right' data-toggle='modal' data-target='#myModal'>Membuat Milestone Baru</button>"; };
+    ?></h1>
 
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
@@ -181,25 +148,87 @@
             </tbody>
         </table>
 
-
-       <button type="button" class="btn btn-default" data-dismiss="modal"><a href="http://localhost/simpony/public/assignments/hgstaff">Kembali</a></button>
-
+        <?php
+         if($var == 1) 
+            { echo "
+                <button type='button' class='btn btn-info btn-sm pull-right' data-toggle='modal' data-target='#modalrpm'>Assign Staff</button>";
+           }
+        ?>
        
     </div>
  <script>
-    $(".update").on("submit", function(){
-        return confirm("Apakah Anda Yakin Untuk Mengassign Pekerjaan Ini?");
-    });
+    // $(".update").on("submit", function(){
+    //     return confirm("Apakah Anda Yakin Untuk Mengassign Pekerjaan Ini?");
+    // });
 
-    window.onbeforeunload = function() {
+    // window.onbeforeunload = function() {
                     
-                   var Ans = confirm("Are you sure you want change page!");
-                   if(Ans==true)
-                       return true;
-                   else
-                       return false;
-               };
+    //                var Ans = confirm("Are you sure you want change page!");
+    //                if(Ans==true)
+    //                    return true;
+    //                else
+    //                    return false;
+    //            };
 </script>
 
+<div class="modal fade" id="modalrpm" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h1>Membuat Rating Per Menit</h1>
+        </div>
+        <div class="modal-body">
+
+   {!! Form::model($assignment, [
+        'method' => 'PATCH',
+        'url' => ['assignments', $assignment->Assn_ID],
+        'class' => 'form-horizontal update' 
+    ]) !!}
+
+
+
+            <div class="form-group {{ $errors->has('mgr_id') ? 'has-error' : ''}}">
+                {!! Form::label('Staff_Prog_ID_Do', 'Pilih Staff: ', ['class' => 'col-sm-3 control-label', ]) !!}
+                <div class="col-sm-6">
+                    {!! Form::select('Staff_Prog_ID_Do', (['' => 'Select a Staff'] + $eser), null, ['class' => 'form-control' , 'required'=> 'required']) !!}
+                    {!! $errors->first('Staff_Prog_ID_Do', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-3">
+            {!! Form::submit('Assign Staff', ['class' => 'btn btn-primary form-control']) !!}
+            
+        </div>
+    </div>
+    {!! Form::close() !!}
+
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
+</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+if ( {{$var}} == 0) {
+window.onbeforeunload = function(){
+  return 'Silahkan membuat bobot hingga 100';
+};
+
+}
+
+</script>
 
 @endsection
