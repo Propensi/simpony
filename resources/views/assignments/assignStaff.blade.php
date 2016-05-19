@@ -190,6 +190,15 @@
     $(".update").on("submit", function(){
         return confirm("Apakah Anda Yakin Untuk Mengassign Pekerjaan Ini?");
     });
+
+    window.onbeforeunload = function() {
+                    
+                   var Ans = confirm("Are you sure you want change page!");
+                   if(Ans==true)
+                       return true;
+                   else
+                       return false;
+               };
 </script>
 
 
