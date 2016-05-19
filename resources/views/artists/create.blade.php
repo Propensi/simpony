@@ -15,9 +15,9 @@
                 </div>
             </div> -->
             <div class="form-group {{ $errors->has('Nama_Artis') ? 'has-error' : ''}}">
-                {!! Form::label('Nama_Artis', 'Nama Artis: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('Nama_Artis', 'Nama Artis: ', ['class' => 'col-sm-3 control-label', 'required'=> 'required']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('Nama_Artis', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('Nama_Artis', null, ['class' => 'form-control','required'=> 'required']) !!}
                     {!! $errors->first('Nama_Artis', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

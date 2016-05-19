@@ -50,6 +50,7 @@
                             'method'=>'DELETE',
                             'url' => ['artprogs', $item->artprog_ID],
                             'style' => 'display:inline'
+                            'class' => 'delete'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
@@ -139,7 +140,7 @@
     });
 </script>
     @include('programs.modal')
-     @include('programs.modalsum')
+    @include('programs.modalsum')
  
 
 
