@@ -43,6 +43,13 @@ class ArtistsController extends Controller
      */
     public function store(Request $request)
     {
+        $duplikasi = Artist::where('Nama_Artis','=',$request->Nama_Artis)->first();
+        
+        if(!is_null($duplikasi)) {
+                    $error = "Artis sudah ada";
+                    return Redirect::back()->withErrors($error);
+        }
+
         
         Artist::create($request->all());
 

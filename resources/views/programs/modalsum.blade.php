@@ -15,7 +15,7 @@
             <div class="form-group {{ $errors->has('Tanggal_Sum') ? 'has-error' : ''}}">
                 {!! Form::label('Tanggal_Sum', 'Tanggal Sum: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::date('Tanggal_Sum', null, ['class' => 'form-control']) !!}
+                    {!! Form::date('Tanggal_Sum', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('Tanggal_Sum', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
