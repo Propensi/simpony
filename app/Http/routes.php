@@ -2,10 +2,7 @@
 
 Route::auth();
 	
-Route::get('/', function () {
-    	// return view('blank');
-	return redirect('/home');
-});
+Route::get('/','DashboardController@role');
 
 
 Route::get('assignments/pinjamriset','AssignmentsController@pinjamriset');
