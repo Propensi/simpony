@@ -143,17 +143,16 @@ class RpmController extends Controller
         $rpm = Rpm::findOrFail($id);
         $rpm->update($request->all());
 
-        $assignments2 = Assignment2::findOrFail($request->Assn_ID);
-        $summary = Summary::where('Sum_ID','=', $assignments2->Sum_ID)->first();
-        $rpm = Rpm::where('Sum_ID','=',$assignments2->Sum_ID)->get();
+        $summary = Summary::where('Sum_ID','=', $rpm->Sum_ID)->first();
+        $rpm = Rpm::where('Sum_ID','=',$rpm->Sum_ID)->get();
 
         $artis = \DB::table('artisprograms')->join('artists', function ($join) {
             $join->on('artisprograms.Artis_ID', '=', 'artists.Artis_ID');
         })->lists('Nama_Artis', 'artisprograms.Artis_ID');
 
-        $rating = \DB::table('ratingpermenit')->where('Sum_ID','=',$assignments2->Sum_ID)->avg('Rating');
+        $rating = 100;
 
-        return view('research.staff', compact('summary','rpm','artis','rating','assignments2'));
+        return view('research.staff', compact('summary','rpm','artis','rating'));
     }
 
 }

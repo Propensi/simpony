@@ -48,7 +48,20 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->artist->Nama_Artis }}</a></td><td>{{ $item->Rating }}</td><td>{{ $item->Deskripsi }}</td>
                     <td>
-                        <a href="{{ url('/rpm/' . $item->Rpm_ID . '/edit') }}" class="btn btn-primary btn-xs">Update</a>
+                        <a href="{{ url('/rpm/edits2/'.$item->Rpm_ID ) }}" class="btn btn-primary btn-xs">Update</a>
+                       
+                        {!! Form::model($rpm, [
+                                'method' => 'PATCH',
+                                'url' => ['/rpm/edits2', $item->Rpm_ID],
+                                'class' => 'form-horizontal',
+                                'style' => 'display:inline'
+                            ]) !!}
+
+                                     {!! Form::hidden('Assn_ID', $summary->Assn_ID) !!}
+                                    
+                                    {!! Form::submit('Update', ['class' => 'btn btn-primary btn-xs']) !!}
+                            {!! Form::close() !!}
+
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/rpmsum', $item->Rpm_ID],
