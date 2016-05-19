@@ -12,8 +12,8 @@
             <div class="pull-left info">
                 <p>{{ Auth::user()->name }}</p>
                 <!-- Status -->
-               <a href="#"><i class="fa fa-circle text-success"></i> {{ Auth::user()->role }}</a>
-
+               <a href="#"><i class="fa fa-circle text-success"></i> {{ Auth::user()->role }} {{ Auth::user()->departments->Dept_Name }}</a>
+             
             </div>
         </div>
 

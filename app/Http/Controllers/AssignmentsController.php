@@ -324,9 +324,9 @@ class AssignmentsController extends Controller
         //$comments = Comment::all();
         //$commentsu = Comment::with('users')->get();
 
-        $comments = \DB::table('comments')->where('Assn_ID','=',$id)
+        $comments = \DB::table('comments')->where('Assn_ID','=',$id)->where('klien','=',1)
         ->join('users', function ($join) {
-            $join->on('comments.Sender', '=', 'users.User_ID');
+            $join->on('comments.Sender', '=', 'users.User_ID')->where('users.role','!=','Head of Dept')->where('users.role','!=','Head Group')->where('users.role','!=','General Manager');
         })
         ->get();
 

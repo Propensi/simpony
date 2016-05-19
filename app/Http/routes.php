@@ -23,6 +23,10 @@ Route::get('assignments2/indexditolak','Assignments2Controller@indexditolak');
 Route::get('assignments2/{Assn_ID}/staff','Assignments2Controller@staff');
 Route::get('assignments2/{Assn_ID}/klien','Assignments2Controller@klien');
 
+Route::patch('rpm/edits2/{Rpm_ID}', 'RpmController@edit2');
+Route::patch('rpm/update2/{Rpm_ID}', 'RpmController@update2');
+
+
 // harus login
 Route::group(['middleware' => 'user'], function () {
 

@@ -172,7 +172,7 @@ public function pelacakan()
 
         //kasi email penolakan
 
-        Session::flash('flash_message', 'assignments2 updated!');
+        Session::flash('flash_message', 'Pekerjaan diperbaharui!');
 
         return Redirect::back();
     }

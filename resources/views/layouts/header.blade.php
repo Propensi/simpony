@@ -1,9 +1,9 @@
 <!-- Main Header -->
 <header class="main-header">
-     <a href="http://localhost/TestRepo3/simpony2/public" class="logo">
+     <a href= {{ url("/") }} class="logo">
     <span class="logo-mini"><b>S</b>IM</span>
     <!-- Logo -->
-    <span class="logo-lg"><b>Simponi</b>Lite</span>
+    <span class="logo-lg"><b>Simponi</b>RCTI</span>
     <!-- <a href="index2.html" class="logo"><b>Simponi</b> Lite</a> -->
 </a>
     <!-- Header Navbar -->
