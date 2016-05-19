@@ -1,6 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
+@include('layouts.flash')
 <h1>Melacak Data Riset</h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">

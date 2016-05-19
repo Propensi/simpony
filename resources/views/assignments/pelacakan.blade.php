@@ -1,7 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
-
+    @include('layouts.flash')
     <!-- Halaman ini digunakan untuk melihat assignment yang diajukan ke orang lain -->
     <div class="table">
 
@@ -106,5 +106,6 @@
                     ?>
                 </tbody>
         </table>
+
     
 @endsection

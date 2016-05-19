@@ -28,4 +28,9 @@ class Department extends Model
     {
         return $this->hasMany('App\User','Dept_ID','Dept_name');
     }
+
+    public function dept()
+    {
+        return $this->hasMany('App\Assignment','Dept_ID','Dept_ID');
+    }
 }

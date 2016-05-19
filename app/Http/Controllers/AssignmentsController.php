@@ -122,7 +122,7 @@ class AssignmentsController extends Controller
            $assignments = Assignment::create(array('Assn_Nama' => $request->Assn_Nama, 'Dept_ID' => $request->Dept_ID, 'Emp_ID_Req_Vald' => $request->Emp_ID_Req_Vald, 'Assn_Deskripsi' => $request->Assn_Deskripsi, 
                 'Assn_File' => $fileName, 'Tgl_Deadline'=> $request->Tgl_Deadline, 'HOD_ID'=> $request->HOD_ID));
 
-            Session::flash('flash_message', 'Assignment added!');
+            Session::flash('flash_message', 'Pekerjaan berhasil dibuat!');
 
             return redirect('assignments/pelacakan');
 
@@ -188,7 +188,15 @@ class AssignmentsController extends Controller
         $assignment = Assignment::findOrFail($id);
         $assignment->update($request->all());
 
-        Session::flash('flash_message', 'Assignment updated!');
+
+        if($request->Assn_Status == '1') {
+        Session::flash('flash_message', 'Pekerjaan berhasil disetujui!');
+        } elseif ($request->Assn_Status == '2') {
+        Session::flash('flash_message', 'Pekerjaan berhasil ditolak!');
+        } else {
+            Session::flash('flash_message', 'Pekerjaan berhasil diperbaharui!');
+        }
+
 
        return Redirect::back();
     }
@@ -200,7 +208,7 @@ class AssignmentsController extends Controller
         $assignment = Assignment::findOrFail($id);
         $assignment->update($request->all());
 
-        Session::flash('flash_message', 'Assignment updated!');
+        Session::flash('flash_message', 'Pekerjaan berhasil diassign!');
 
         return redirect('assignments/pekerjaanDept');
     }
@@ -327,7 +335,7 @@ class AssignmentsController extends Controller
     {
         $assignments0 = \DB::table('assignments')->where('Assn_Status', '=', 1 )->where('HG_ID', '!=', 'null' )
         ->join('steps', function ($join) { $join->on('assignments.Milestone', '=', 'steps.ID_Step');})
-        ->get();
+        ->paginate(15);
 
 
         //$assignments = Assignment::paginate(15);

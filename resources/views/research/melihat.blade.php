@@ -1,6 +1,7 @@
 @extends('layouts.admin_template')
 
 @section('content')
+@include('layouts.flash')
 <h1>Melihat Pekerjaan</h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">

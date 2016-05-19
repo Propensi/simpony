@@ -74,6 +74,8 @@ public function pelacakan()
 
         Assignment2::create(array('Prog_ID' => $request->Prog_ID, 'Tanggal' => $request->Tanggal, 'Deksripsi' => $request->Deskripsi, 'Staff' => $request->Staff, 'Dept_ID' => $request->Dept_ID, 'Sender' => $request->Sender, 'Status' => $request->Status));
 
+        Session::flash('flash_message', 'Pekerjaan berhasil dibuat!');
+        
         return redirect('assignments2/pelacakan');
     }
 

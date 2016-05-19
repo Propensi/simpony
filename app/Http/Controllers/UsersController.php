@@ -62,7 +62,7 @@ class UsersController extends Controller
 
         
 
-        Session::flash('flash_message', 'User added!');
+        Session::flash('flash_message', 'User berhasil ditambah!');
 
         return redirect('users');
     }
@@ -111,7 +111,7 @@ class UsersController extends Controller
         $user = User::findOrFail($user_ID);
         $user->update($request->all());
 
-        Session::flash('flash_message', 'User updated!');
+        Session::flash('flash_message', 'User diperbaharui!');
 
         return redirect('users');
     }
@@ -127,7 +127,7 @@ class UsersController extends Controller
     {
         User::destroy($user_ID);
 
-        Session::flash('flash_message', 'User deleted!');
+        Session::flash('flash_message', 'User telah dihapus!');
 
         return redirect('users');
     }

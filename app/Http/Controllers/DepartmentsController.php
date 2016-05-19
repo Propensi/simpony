@@ -46,7 +46,7 @@ class DepartmentsController extends Controller
 
         Department::create($request->all());
 
-        Session::flash('flash_message', 'Department added!');
+        Session::flash('flash_message', 'Department berhasil ditambah!');
 
         return redirect('departments');
     }
@@ -93,7 +93,7 @@ class DepartmentsController extends Controller
         $department = Department::findOrFail($id);
         $department->update($request->all());
 
-        Session::flash('flash_message', 'Department updated!');
+        Session::flash('flash_message', 'Department diperbaharui!');
 
         return redirect('departments');
     }
@@ -109,7 +109,7 @@ class DepartmentsController extends Controller
     {
         Department::destroy($id);
 
-        Session::flash('flash_message', 'Department deleted!');
+        Session::flash('flash_message', 'Department dihapus!');
 
         return redirect('departments');
     }
