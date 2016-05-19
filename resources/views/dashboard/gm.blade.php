@@ -403,5 +403,92 @@
   });
 </script>
 
+<div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+          <div class="panel-heading">Detail Per Kota</div>
+
+          <!-- <script src="node_modules/chart.js/dist/Chart.min.js" type="text/javascript"></script> -->
+          <script>
+            
+          </script>
+
+          </script>
+          <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div style="height: 500px;width:800px" class="col-md-7">  
+              <canvas id="myChart" width="800" height="500"></canvas>
+            </div>
+          </div>
+          <h3 align="center"><a href="/komplain">Kembali</a></h3>
+          <script type="text/javascript">
+          var xAxis = [];
+          var yAxis1 = [];
+          var yAxis2 = [];
+
+            @foreach($kotakomp as $komplain)
+              xAxis.push('{{$komplain->tanggal}}');
+              yAxis1.push('{{$komplain->jumlah_komplain}}');
+              @if($komplain->jumlah_resolved == NULL)
+                yAxis2.push(0);
+              @else
+                yAxis2.push({{$komplain->jumlah_resolved}});
+              @endif
+              
+            @endforeach
+
+          var ctx = document.getElementById("myChart").getContext("2d");
+          var myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: xAxis,
+                  datasets: [{
+                    fill: false,
+                      lineTension: 0.1,
+                      borderColor: "rgba(75,192,192,1)",
+                      borderCapStyle: 'butt',
+                      borderDash: [],
+                      borderDashOffset: 0.0,
+                      borderJoinStyle: 'miter',
+                      pointBorderColor: "rgba(75,192,192,1)",
+                      pointBackgroundColor: "#fff",
+                      pointBorderWidth: 1,
+                      pointRadius: 1,
+                      pointHitRadius: 10,
+                      label: 'Jumlah terselesaikan',
+                      data: yAxis2
+                  }, {
+                    fill: false,
+                      lineTension: 0.1,
+                      borderColor: "rgba(171,27,27,1)",
+                      borderCapStyle: 'butt',
+                      borderDash: [],
+                      borderDashOffset: 0.0,
+                      borderJoinStyle: 'miter',
+                      pointBorderColor: "rgba(171,27,27,1)",
+                      pointBackgroundColor: "#fff",
+                      pointBorderWidth: 1,
+                      pointRadius: 1,
+                      pointHitRadius: 10,
+                      label: 'Jumlah komplain',
+                      data: yAxis1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }]
+                  }
+              }
+          });
+          </script>
+        </div>
+      </div>
+    </div>
+
 @endsection
 

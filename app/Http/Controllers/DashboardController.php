@@ -26,7 +26,8 @@ class DashboardController extends Controller
         $promosi = Assignment::where('Hg_Val','!=',1)->where('Hod_Val','!=',1)->count();    
         $research = Assignment2::where('Status','=','Proses')->count();
         $total = $promosi + $research;
-        return view('dashboard.gm', compact('stats','jadwaltayangs','promosi','research','total'));
+        $kotakomp = [];
+        return view('dashboard.gm', compact('stats','jadwaltayangs','promosi','research','total','kotakomp'));
     }
 
      public function hg()
