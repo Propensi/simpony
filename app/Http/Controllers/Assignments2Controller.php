@@ -36,10 +36,25 @@ public function indexstaff()
 
 public function pelacakan()
     {
-        $assignments2 = Assignment2::paginate(15);
+        $assignments2 = Assignment2::where('Sender','=',Auth::user()->user_ID)->where('Status','!=','Ditolak')->paginate(15);
 
         return view('research.pelacakan', compact('assignments2'));
     }
+
+    public function index()
+    {
+        $assignments2 = Assignment2::where('Status','!=','Ditolak')->paginate(15);
+
+        return view('research.melihat', compact('assignments2'));
+    }
+
+    public function indexditolak()
+    {
+        $assignments2 = Assignment2::where('Status','=','Ditolak')->paginate(15);
+
+        return view('research.melihat', compact('assignments2'));
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -52,13 +67,16 @@ public function pelacakan()
     	$duplikasi = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal)->first();
         
         if(!is_null($duplikasi)) {
-                    $error = "Summary sudah ada di Program ini, silahkan melihat di halaman program.";
-                    return Redirect::back()->withErrors($error);
+            Assignment2::create(array('Prog_ID' => $request->Prog_ID, 'Tanggal' => $request->Tanggal, 'Deksripsi' => $request->Deskripsi, 'Staff' => $request->Staff, 'Dept_ID' => $request->Dept_ID, 'Sender' => $request->Sender, 'Status' => $request->Status , 'Sum_ID' => $duplikasi->Sum_ID));
+
+                return redirect('assignments2/pelacakan');
         }
 
-        Assignment2::create(array('Prog_ID' => $request->Prog_ID, 'Tanggal' => $request->Tanggal, 'Deksripsi' => $request->Deskripsi, 'Staff' => $request->Staff, 'Dept_ID' => $request->Dept_ID, 'Sender' => $request->Sender));
+        Assignment2::create(array('Prog_ID' => $request->Prog_ID, 'Tanggal' => $request->Tanggal, 'Deksripsi' => $request->Deskripsi, 'Staff' => $request->Staff, 'Dept_ID' => $request->Dept_ID, 'Sender' => $request->Sender, 'Status' => $request->Status));
 
-        return Redirect::back();
+        Session::flash('flash_message', 'Pekerjaan berhasil dibuat!');
+        
+        return redirect('assignments2/pelacakan');
     }
 
     /**
@@ -80,8 +98,30 @@ public function pelacakan()
 
         $rating = \DB::table('ratingpermenit')->where('Sum_ID','=',$assignments2->Sum_ID)->avg('Rating');
 
-        return view('research.staff', compact('summary','rpm','artis','rating'));
+        return view('research.staff', compact('summary','rpm','artis','rating','assignments2'));
     }
+
+
+    public function klien($id)
+    {
+        $assignments2 = Assignment2::findOrFail($id);
+        $summary = Summary::where('Sum_ID','=', $assignments2->Sum_ID)->first();
+        if($assignments2->Status == 'Menunggu') {
+            $rpm = [];
+            $rating = '';    
+        } elseif ($assignments2->Status == 'Ditolak') {
+            $rpm = [];
+            $rating = '';
+        } else {
+        $rpm = Rpm::where('Sum_ID','=',$assignments2->Sum_ID)->get();
+        $rating = \DB::table('ratingpermenit')->where('Sum_ID','=',$assignments2->Sum_ID)->avg('Rating');
+        }
+
+        
+
+        return view('research.klien', compact('summary','rpm','rating','assignments2'));
+    }
+
 
         public function show($id)
     {
@@ -102,9 +142,37 @@ public function pelacakan()
         
         $assignments2 = Assignment2::findOrFail($id);
 
+        //klo $request ditolak
+        if($request->Status == 'Proses') {
+            if($assignments2->Status == 'Ditolak') {
+            $assignments2->update(array("Status" => 'Proses'));
+            return redirect('assignments2/index');
+            }
+        }
+
+        if($request->Status == 'Proses') {
+            $duplikasi = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal_Sum)->first();
+        
+            if(!is_null($duplikasi)) {
+                if($assignments2->Status == 'Menunggu') { 
+                    $assignments2->update(array("Sum_ID" => $duplikasi->Sum_ID, "Status" => 'Proses'));
+                }
+                    return Redirect::back();
+                
+            }
+
+        Summary::create($request->all());
+        $sum = Summary::where('Prog_ID','=',$request->Prog_ID)->where('Tanggal_Sum','=',$request->Tanggal_Sum)->first();
+
+        $assignments2->update(array("Sum_ID" => $sum->Sum_ID));
+        }
+
+
         $assignments2->update($request->all());
 
-        Session::flash('flash_message', 'assignments2 updated!');
+        //kasi email penolakan
+
+        Session::flash('flash_message', 'Pekerjaan diperbaharui!');
 
         return Redirect::back();
     }

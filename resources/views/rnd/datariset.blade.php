@@ -37,6 +37,7 @@
           
             {!! Form::hidden('Staff', '27' ) !!}
             {!! Form::hidden('Dept_ID','6') !!}
+            {!! Form::hidden('Status','Menunggu') !!}
             {!! Form::hidden('Sender', Auth::user()->user_ID ) !!}
             
     <div class="form-group">
