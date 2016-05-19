@@ -27,7 +27,8 @@
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/jadwaltayangs', $item->Jadwal_ID],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
+                            'class' => 'delete'
                         ]) !!}
                             {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
@@ -38,7 +39,11 @@
         </table>
         <div class="pagination"> {!! $jadwaltayangs->render() !!} </div>
     </div>
-
+<script>
+    $(".delete").on("submit", function(){
+        return confirm("Apakah Anda Yakin Untuk Menghapus Data Ini?");
+    });
+</script>
 </div>
 </div>
 <<<<<<< HEAD

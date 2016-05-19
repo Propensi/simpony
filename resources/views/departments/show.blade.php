@@ -2,12 +2,12 @@
 
 @section('content')
 
-    <h1>Department</h1>
+    <h1>Departemen</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID.</th> <th>Dept Name</th>
+                    <th>ID.</th> <th>Nama Departemen</th>
                 </tr>
             </thead>
             <tbody>
