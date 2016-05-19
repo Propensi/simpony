@@ -23,7 +23,8 @@ class DashboardController extends Controller
      */
     public function gm()
     {
-        $current = date("Y/m/d");
+        $current = date("Ymd", time() + 3600*24);
+
     	$jadwaltayangs = Jadwaltayang::where("Tanggal",'=',$current)->orderBy('Time','asc')->paginate(15);
         $promosi = Assignment::where('Hg_Val','!=',1)->where('Hod_Val','!=',1)->count();    
         $research = Assignment2::where('Status','=','Proses')->count();
@@ -33,12 +34,12 @@ class DashboardController extends Controller
 
             $work = DB::select(DB::raw( "SELECT count(*) as jumlah, Tgl_Deadline FROM `assignments` group BY Tgl_Deadline "));
 
-        return view('dashboard.gm', compact('stats','jadwaltayangs','promosi','research','total','rating','work'));
+        return view('dashboard.gm', compact('stats','jadwaltayangs','promosi','research','total','rating','work','current'));
     }
 
      public function hg()
     {
-        $current = date("Y/m/d");
+        $current = date("Ymd", time() + 3600*24);
         $jadwaltayangs = Jadwaltayang::where("Tanggal",'=',$current)->orderBy('Time','asc')->paginate(15);
         $promosi = Assignment::where('Hg_Val','!=',1)->where('Hod_Val','!=',1)->count();    
         $research = Assignment2::where('Status','=','Proses')->count();
@@ -57,7 +58,7 @@ class DashboardController extends Controller
 
      public function hod()
     {
-        $current = date("Y/m/d");
+        $current = date("Ymd", time() + 3600*24);
         $jadwaltayangs = Jadwaltayang::where("Tanggal",'=',$current)->orderBy('Time','asc')->paginate(15);
         $promosi = Assignment::where('Hg_Val','!=',1)->where('Hod_Val','!=',1)->count();    
         $research = Assignment2::where('Status','=','Proses')->count();
