@@ -120,6 +120,7 @@
             </thead>
             <tbody>
             {{-- */$x=0;/* --}}
+            
             @foreach($jadwaltayangs as $item)
                 {{-- */$x++;/* --}}
                 <tr>

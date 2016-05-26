@@ -131,7 +131,8 @@ class JadwaltayangsController extends Controller
 
         $jadwaltayangs = Jadwaltayang::where('Prog_ID','=',$request['Prog_ID'])->paginate(15);
 
-        return view('plansched/.show', compact('program','jadwaltayangs'));
+        // return view('plansched/.show', compact('program','jadwaltayangs'));
+        return redirect('jadwaltayangs');
 
     }
 

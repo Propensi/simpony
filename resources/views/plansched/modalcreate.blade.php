@@ -18,6 +18,7 @@
                     {!! $errors->first('Tanggal', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
             <div class="form-group {{ $errors->has('Time') ? 'has-error' : ''}}">
                 {!! Form::label('Time', trans('jadwaltayangs.Time'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -41,10 +42,11 @@
             @endforeach
         </ul>
     @endif
-            </div>
+          </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-  </div>
+</div>
