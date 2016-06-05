@@ -39,10 +39,18 @@
         <div class="pagination"> {!! $artists->render() !!} </div>
     </div>
 
+<<<<<<< HEAD
      <script>
     $(".delete").on("submit", function(){
         return confirm("Do you want to delete this item?");
     });
     </script>
+=======
+        <script>
+    $(".delete").on("submit", function(){
+        return confirm("Apakah anda yakin untuk menghapus data ini?");
+    });
+</script>
+>>>>>>> refs/remotes/origin/master
 
 @endsection

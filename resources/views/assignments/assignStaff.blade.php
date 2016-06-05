@@ -81,7 +81,7 @@
                 {!! Form::label('bobot', 'Bobot: ', ['class' => 'col-sm-3 control-label', 'required'=> 'required']) !!}
                 <div class="col-sm-6">
                     
-                    <input type="number" class ="form-control" name="bobot" min={{$min}} max="100"> 
+                    <input type="number" class ="form-control " name="bobot" min={{$min}} max="100" required> 
                     <?php if(!is_null($min)) {
 
                            echo '<p>minimal : '.$min.'</p>';
@@ -94,7 +94,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Tambahkan', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}
@@ -108,7 +108,7 @@
     @endif
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
         </div>
       </div>
     </div>
