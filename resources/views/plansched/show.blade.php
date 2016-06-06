@@ -12,7 +12,6 @@
             <h5>Deskripsi : {{ $program->Prog_Deskripsi }}</h5>
     </div>
     </div>
-    </div>
 
     <div class="col-md-10">
 
@@ -51,8 +50,7 @@
         <div class="pagination"> {!! $jadwaltayangs->render() !!} </div>
     </div>
 
-</div>
-
+</div></div>
 
 @include('plansched.modalcreate')
 

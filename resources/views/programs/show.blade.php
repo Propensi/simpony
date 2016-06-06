@@ -49,7 +49,7 @@
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['artprogs', $item->artprog_ID],
-                            'style' => 'display:inline'
+                            'style' => 'display:inline',
                             'class' => 'delete'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}

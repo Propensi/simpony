@@ -39,11 +39,9 @@
         <div class="pagination"> {!! $jadwaltayangs->render() !!} </div>
     </div>
 
+<!-- </div>
 </div>
+</div> -->
 </div>
-<<<<<<< HEAD
-</div>
-</div>
-=======
->>>>>>> master
+
 @endsection
