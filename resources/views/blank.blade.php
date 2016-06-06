@@ -1,8 +1,10 @@
 @extends('layouts.admin_template')
 
 @section('content')
+
         <section class="content-header">
             <div class="col-md-6">
+            <br>
             <div class="col-md-6 box">
                  <div class="col-md-12">
                     <center>
