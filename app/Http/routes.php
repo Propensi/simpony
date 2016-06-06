@@ -34,8 +34,8 @@ Route::group(['middleware' => 'user'], function () {
 	Route::get('assignments/pekerjaanstaff', 'AssignmentsController@pekerjaanstaff');
 	Route::delete('rpmsum/{Rpm_ID}', 'RpmController@delete');
 	Route::get('jadwalharian/', 'JadwalTayangsController@jadwalharian');
-});
 
+});
 // minimal staff
 Route::group(['middleware' => 'Staff'], function () {
 	Route::post('files/create', 'FilesController@handleUpload');
@@ -94,3 +94,5 @@ Route::group(['middleware' => ['user']], function () {
 	Route::resource('summary', 'SummaryController');
 	Route::resource('rpm', 'RpmController');
 });
+
+

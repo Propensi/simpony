@@ -77,6 +77,7 @@ class RpmController extends Controller
         $rpm = Rpm::findOrFail($id);
 
         return view('rpm.edit', compact('rpm'));
+        
     }
 
     /**
