@@ -52,7 +52,7 @@
                 <ul class="treeview-menu">
 
                 <li><a href="{{url('assignments/pelacakan')}}"><span>Pelacakan Promo<span></a></li>
-                <li><a href="{{ url('assignments2/pelacakan')}}"><span>Pelacakan Data Riset</span></a></li>
+                
 
             </ul>
             </li>
