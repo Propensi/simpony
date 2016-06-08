@@ -71,7 +71,7 @@ class AssignmentsController extends Controller
         ];
 
         $messages = [
-        'Tgl_Deadline.date' => 'Tanggal deadline bermasalah'
+        'after' => 'Tanggal deadline bermasalah'
         ];
 
         $validation = $this->validate($request, $rules1, $messages);
