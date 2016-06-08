@@ -42,7 +42,7 @@
                 <ul class="treeview-menu">
 
                 <li><a href="{{url('assignments/create')}}">Pembuatan Promo</a></li>
-                <li><a href="{{ url('assignments2/membuatriset')}}">Pembuatan Data Riset</a></li>
+             
 
             </ul>
             </li>
