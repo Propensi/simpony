@@ -324,13 +324,18 @@ class AssignmentsController extends Controller
         //$comments = Comment::all();
         //$commentsu = Comment::with('users')->get();
 
-        $comments = \DB::table('comments')->where('Assn_ID','=',$id)->where('klien','=',1)
+        // $comments = \DB::table('comments')->where('Assn_ID','=',$id)->where('klien','=',1)
+        // ->join('users', function ($join) use ($assignment) {
+        //     $join->on('comments.Sender', '=', 'users.User_ID');
+        // })->where('role','!=','Head of Dept')->where('role','!=','Head Group')->where('role','!=','General Manager')->orWhere(function ($query) use ($assignment) {
+        //         $query->where('Sender', '=', $assignment->Emp_ID_Req_Vald);
+        //         })
+        // ->get();
+
+        $comments = \DB::table('comments')->where('Assn_ID','=',$id)
         ->join('users', function ($join) use ($assignment) {
             $join->on('comments.Sender', '=', 'users.User_ID');
-        })->where('role','!=','Head of Dept')->where('role','!=','Head Group')->where('role','!=','General Manager')->orWhere(function ($query) use ($assignment) {
-                $query->where('Sender', '=', $assignment->Emp_ID_Req_Vald);
-                })
-        ->get();
+        })->get();
 
         $files = Files::where('Assn_ID','=',$id)->get();
 

@@ -182,7 +182,7 @@
 
    {!! Form::model($assignment, [
         'method' => 'PATCH',
-        'url' => ['assignments', $assignment->Assn_ID],
+        'url' => ['assignments/update2', $assignment->Assn_ID],
         'class' => 'form-horizontal update' 
     ]) !!}
 
