@@ -11,10 +11,11 @@
       </div>
 
       <div class="row">
-      <div class="col-md-6">
+     
+        <div class="col-md-6">
       <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Rating Program RCTI</h3>
+              <h3 class="box-title">Pekerjaan Saat Ini</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -23,12 +24,13 @@
               </div>
             </div>
             <div class="box-body chart-responsive">
-              <canvas id="myChart" ></canvas>
+              <canvas id="piechart" ></canvas>
             </div>
             <!-- /.box-body -->
           </div>
 
           </div>
+
 
 
         <div class="col-md-6">
@@ -55,71 +57,6 @@
                     </div>
       </div>
 
- <div class="row">
-      <div class="col-md-6">
-                  <div class="box box-primary">
-            <div class="box-header ui-sortable-handle" style="cursor: move;">
-              <i class="ion ion-clipboard"></i>
-
-              <h3 class="box-title">Jadwal Tayang</h3>
-
-            
-            <!-- /.box-header -->
-            <div class="box-body">
-
-    <div class="table">
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <!-- <th>S.No</th> -->
-                    <th>Jam</th><th>Program</th>
-                </tr>
-            </thead>
-            <tbody>
-            {{-- */$x=0;/* --}}
-            @foreach($jadwaltayangs as $item)
-                {{-- */$x++;/* --}}
-                <tr>
-                    <!-- <td><a href="{{ url('jadwaltayangs', $item->Jadwal_ID) }}">{{ $x }}</td> -->
-                    <td>{{ $item->Time }}</a></td>
-                    <td>{{ $item->Nama_Program }}</td>
-                   
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        <div class="pagination"> {!! $jadwaltayangs->render() !!} </div>
-   
-
-</div>
-</div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix no-border">
-              </div>
-          </div>      
-        </div>
-        </div>
-
-        <div class="col-md-6">
-      <div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Pekerjaan Saat Ini</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body chart-responsive">
-              <canvas id="piechart" ></canvas>
-            </div>
-            <!-- /.box-body -->
-          </div>
-
-          </div>
-
-        </div>
 
        <script>
 

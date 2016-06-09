@@ -100,7 +100,7 @@
         </div>
         </div>
 
-        <div class="col-md-6">
+      <div class="col-md-6">
       <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Pekerjaan Saat Ini</h3>
